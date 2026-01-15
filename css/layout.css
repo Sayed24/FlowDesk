@@ -1,1 +1,130 @@
+/* Wrapper for the whole app */
+.app {
+  display: flex;
+  height: 100vh;
+}
 
+/* Sidebar (Desktop) */
+.sidebar {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  width: 250px;
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  color: var(--text-light);
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--accent-color);
+}
+
+.main {
+  flex: 1;
+  padding: var(--padding);
+  overflow-y: auto;
+  background-color: var(--background-light);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Bottom Navigation (Mobile) */
+.bottom-nav {
+  display: none;
+  background-color: var(--primary-color);
+  padding: 12px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ddd;
+}
+
+.bottom-nav a {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* FAB (Floating Action Button) */
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  border: none;
+  padding: 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.fab:hover {
+  background-color: var(--primary-color);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  /* Mobile Layout */
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: flex;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .topbar h2 {
+    font-size: 1.5rem;
+  }
+}
