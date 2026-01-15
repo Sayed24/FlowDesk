@@ -78,3 +78,39 @@ button:hover {
   text-align: right;
 }
 
+/* Task Filters */
+.task-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.task-filters input,
+.task-filters select {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Tasks Grid */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* Task Card Actions */
+.task-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.task-actions button {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
