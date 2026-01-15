@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusFlow • Dashboard</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/playful.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- App Wrapper -->
+  <div class="app">
+
+    <!-- Sidebar (Desktop) -->
+    <aside class="sidebar">
+      <h1 class="logo">FocusFlow</h1>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Dashboard</a>
+        <a href="tasks.html" class="nav-link">Tasks</a>
+        <a href="notes.html" class="nav-link">Notes</a>
+        <a href="goals.html" class="nav-link">Goals</a>
+        <a href="habits.html" class="nav-link">Habits</a>
+        <a href="settings.html" class="nav-link">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <!-- Top Header -->
+      <header class="topbar">
+        <h2>Dashboard</h2>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          🌙
+        </button>
+      </header>
+
+      <!-- Page Content -->
+      <section class="content">
+        <div class="card">
+          <h3>Welcome 👋</h3>
+          <p>Your productivity, fully offline.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">Today’s Tasks</div>
+          <div class="card">Notes</div>
+          <div class="card">Goals</div>
+          <div class="card">Habits</div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Floating Action Button -->
+  <button class="fab" aria-label="Add new item">
+    ➕
+  </button>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="active">🏠</a>
+    <a href="tasks.html">✅</a>
+    <a href="notes.html">📝</a>
+    <a href="goals.html">🎯</a>
+    <a href="habits.html">🔥</a>
+  </nav>
+
+</body>
+</html>
