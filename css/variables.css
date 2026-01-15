@@ -1,1 +1,18 @@
+/* Color Palette */
+:root {
+  --primary-color: #6C63FF;
+  --accent-color: #FFB703;
+  --success-color: #2EC4B6;
+  --danger-color: #EF476F;
+  --background-light: #f0f0f0;
+  --background-dark: #222222;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
 
+  /* Spacing & Layout */
+  --padding: 16px;
+  --margin: 20px;
+  --max-width: 1200px;
+}
