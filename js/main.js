@@ -50,6 +50,69 @@ function requireAuth() {
     location.href = "login.html";
   }
 }
+/* ===============================
+   FlowDesk — App Bootstrap
+   File: js/main.js
+   =============================== */
+
+/* ---------- AUTH GUARD ---------- */
+if (typeof requireAuth === "function") {
+  requireAuth();
+}
+
+/* ---------- INIT APP ---------- */
+document.addEventListener("DOMContentLoaded", async () => {
+  /* Init IndexedDB */
+  if (typeof initDB === "function") {
+    try {
+      await initDB();
+      console.log("IndexedDB ready");
+    } catch (e) {
+      console.error("DB init failed", e);
+    }
+  }
+
+  /* ---------- ACTIVE NAV ---------- */
+  const current = location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-link, .bottom-nav a").forEach(link => {
+    if (link.getAttribute("href") === current) {
+      link.classList.add("active");
+    }
+  });
+
+  /* ---------- THEME ---------- */
+  const toggle = document.querySelector(".theme-toggle");
+  const savedTheme = localStorage.getItem("flowdesk-theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  }
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem(
+        "flowdesk-theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+      );
+    });
+  }
+
+  /* ---------- LOGOUT ---------- */
+  const logoutBtn = document.querySelector("[data-logout]");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", logout);
+  }
+
+  /* ---------- FAB ---------- */
+  const fab = document.querySelector(".fab");
+  if (fab) {
+    fab.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("fab:click"));
+    });
+  }
+});
 
 /* ---------- LOGOUT ---------- */
 function logout() {
