@@ -1,1 +1,75 @@
+/* ===============================
+   FlowDesk — Theme Tokens
+   File: css/theme.css
+   =============================== */
 
+:root {
+  /* BRAND */
+  --primary: #6366f1;
+  --primary-soft: rgba(99, 102, 241, 0.15);
+  --accent: #22c55e;
+  --danger: #ef4444;
+
+  /* SURFACES */
+  --surface: #ffffff;
+  --surface-muted: #f9fafb;
+  --surface-glass: rgba(255, 255, 255, 0.75);
+
+  /* TEXT */
+  --text: #0f172a;
+  --text-muted: #64748b;
+
+  /* BORDERS */
+  --border: #e5e7eb;
+
+  /* RADII */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+
+  /* SHADOWS (Material-inspired) */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* MOTION */
+  --transition-fast: 0.15s ease;
+  --transition: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* FONT */
+  --font-main: -apple-system, BlinkMacSystemFont, "Inter",
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* GLOBAL THEME APPLICATION */
+body {
+  font-family: var(--font-main);
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* SELECTION */
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* SCROLLBAR (Desktop polish) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+}
