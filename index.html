@@ -5,74 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FlowDesk • Dashboard</title>
 
-  <!-- Base Styles -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/theme.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/dark.css">
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
-
-  <!-- Top Bar -->
-  <header class="topbar">
-    <h1>FlowDesk</h1>
-
-    <div class="top-actions">
-      <button class="theme-toggle" title="Toggle theme">🌙</button>
-
-      <select id="langSelect">
-        <option value="en">EN</option>
-        <option value="ar">AR</option>
-        <option value="es">ES</option>
-      </select>
-
-      <button onclick="logout()">Logout</button>
-    </div>
-  </header>
 
   <!-- Sidebar -->
   <aside class="sidebar">
+    <h2 class="logo">FlowDesk</h2>
+
     <nav>
-      <a href="index.html" data-i18n="dashboard"></a>
-      <a href="tasks.html" data-i18n="tasks"></a>
-      <a href="notes.html" data-i18n="notes"></a>
-      <a href="goals.html" data-i18n="goals"></a>
-      <a href="habits.html" data-i18n="habits"></a>
-      <a href="settings.html" data-i18n="settings"></a>
+      <a class="nav-link active" href="index.html">Dashboard</a>
+      <a class="nav-link" href="tasks.html">Tasks</a>
+      <a class="nav-link" href="habits.html">Habits</a>
+      <a class="nav-link" href="settings.html">Settings</a>
+      <a class="nav-link" data-logout>Logout</a>
     </nav>
   </aside>
 
   <!-- Main -->
-  <main class="container">
-    <section class="grid">
-      <div class="card" id="taskCount"></div>
-      <div class="card" id="noteCount"></div>
-      <div class="card" id="goalProgress"></div>
-      <div class="card" id="habitStreak"></div>
+  <main class="main-content">
+
+    <header class="topbar">
+      <button class="theme-toggle">🌙</button>
+    </header>
+
+    <section class="dashboard-grid">
+
+      <div class="card">
+        <h3>Tasks</h3>
+        <p id="task-count">0 active</p>
+      </div>
+
+      <div class="card">
+        <h3>Habits</h3>
+        <p id="habit-count">0 tracked</p>
+      </div>
+
+      <div class="card">
+        <h3>Focus Time</h3>
+        <p>0h today</p>
+      </div>
+
+      <div class="card">
+        <h3>Streak</h3>
+        <p>0 days</p>
+      </div>
+
     </section>
 
-    <canvas id="taskChart" height="200"></canvas>
+    <button class="fab">＋</button>
+
   </main>
 
-  <!-- Floating Action Button -->
-  <button class="fab" onclick="location.href='tasks.html'">＋</button>
-
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
+  <!-- JS -->
   <script src="js/auth.js"></script>
-  <script src="js/i18n.js"></script>
   <script src="js/db.js"></script>
-  <script src="js/charts.js"></script>
-  <script src="js/pages/dashboard.js"></script>
-
+  <script src="js/main.js"></script>
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
-    }
+    /* Dashboard data */
+    document.addEventListener("DOMContentLoaded", async () => {
+      if (!window.db) return;
+
+      const tasks = await db.getAll("tasks");
+      const habits = await db.getAll("habits");
+
+      document.getElementById("task-count").textContent =
+        tasks.filter(t => !t.done).length + " active";
+
+      document.getElementById("habit-count").textContent =
+        habits.length + " tracked";
+    });
   </script>
+
 </body>
 </html>
