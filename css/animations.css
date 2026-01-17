@@ -1,13 +1,14 @@
-/* ===============================
-   FlowDesk — Animations
+/* =====================================================
+   FlowDesk — Animations & Motion
+   Smooth, subtle, professional
    File: css/animations.css
-   =============================== */
+   ===================================================== */
 
-/* FADE IN */
+/* ---------- FADE IN ---------- */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -15,11 +16,15 @@
   }
 }
 
-/* SCALE IN */
+.fade-in {
+  animation: fadeIn var(--speed-slow) var(--ease) both;
+}
+
+/* ---------- SCALE ---------- */
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: scale(.96);
   }
   to {
     opacity: 1;
@@ -27,63 +32,37 @@
   }
 }
 
-/* SLIDE UP */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scale-in {
+  animation: scaleIn var(--speed) var(--ease) both;
 }
 
-/* APPLY ANIMATIONS */
+/* ---------- HOVER ---------- */
 .card,
-.list-item {
-  animation: fadeIn 0.35s ease;
-}
-
-.modal {
-  animation: scaleIn 0.25s ease;
-}
-
-.sidebar a {
-  transition: background var(--transition), transform var(--transition);
-}
-
-.sidebar a:active {
-  transform: scale(0.97);
-}
-
-button,
-.btn,
-.fab {
+.task-card,
+.habit-item {
   transition:
-    background var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
+    transform var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease);
 }
 
-button:active,
-.btn:active {
-  transform: scale(0.97);
+.card:hover,
+.task-card:hover,
+.habit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* LOADING SKELETON */
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--surface-muted) 25%,
-    rgba(255,255,255,0.6) 37%,
-    var(--surface-muted) 63%
-  );
-  background-size: 400% 100%;
-  animation: skeleton 1.4s ease infinite;
+/* ---------- DRAG ---------- */
+.task-card.dragging {
+  opacity: .5;
+  transform: rotate(2deg);
 }
 
-@keyframes skeleton {
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
+/* ---------- BUTTON FEEDBACK ---------- */
+button:hover {
+  filter: brightness(1.05);
+}
+
+button:active {
+  transform: scale(.97);
 }
