@@ -1,118 +1,167 @@
-/* ===============================
-   FlowDesk — UI Components
+/* =====================================================
+   FlowDesk — Components
+   Material cards × iOS buttons
    File: css/components.css
-   =============================== */
+   ===================================================== */
 
-/* CARDS */
-.card {
-  background: var(--surface-glass);
-  backdrop-filter: blur(14px);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: 1.2rem;
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* BUTTONS */
-.btn {
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius);
-  font-weight: 500;
-  background: var(--primary);
-  color: #fff;
-  transition: background var(--transition), transform var(--transition);
-}
-
-.btn:hover {
-  background: #4f46e5;
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--primary);
-}
-
-.btn-danger {
-  background: var(--danger);
-}
-
-/* FLOATING ACTION BUTTON */
-.fab {
-  position: fixed;
-  right: 1.2rem;
-  bottom: 1.2rem;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
-  font-size: 1.6rem;
-  display: grid;
-  place-items: center;
-  box-shadow: var(--shadow-lg);
-  z-index: 90;
-}
-
-.fab:hover {
-  transform: scale(1.05);
-}
-
-/* MODAL */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-
-.modal {
+/* ---------- CARDS ---------- */
+.card,
+.settings-card {
   background: var(--surface);
   border-radius: var(--radius-lg);
-  width: 90%;
-  max-width: 420px;
-  padding: 1.25rem;
-  box-shadow: var(--shadow-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
 }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
+.card:hover,
+.settings-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-/* BADGES */
-.badge {
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
+/* ---------- BUTTONS ---------- */
+.btn {
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-medium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn.secondary {
   background: var(--primary-soft);
   color: var(--primary);
 }
 
-/* EMPTY STATE */
-.empty {
-  text-align: center;
-  padding: 2rem;
-  opacity: 0.6;
+.btn.danger {
+  background: var(--danger);
+  color: white;
 }
 
-/* LIST ITEM */
-.list-item {
-  padding: 0.75rem;
-  border-radius: var(--radius);
-  background: var(--surface-muted);
-  margin-bottom: 0.5rem;
+/* ---------- FAB ---------- */
+.fab {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-fab);
+}
+
+/* ---------- TASKS ---------- */
+.task-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.task-column {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.task-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* ---------- HABITS ---------- */
+.habit-item {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.habit-item button {
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.habit-item button.done {
+  background: var(--accent);
+  color: white;
+}
+
+/* ---------- SETTINGS ---------- */
+.settings-section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* ---------- AUTH ---------- */
+.auth-body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  background: var(--surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.auth-logo {
+  color: var(--primary);
+  margin-bottom: var(--space-2);
+}
+
+.auth-subtitle {
+  margin-bottom: var(--space-6);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.auth-message {
+  color: var(--danger);
+  font-size: var(--text-sm);
 }
