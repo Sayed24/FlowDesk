@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk • Tasks</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/playful.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h1 class="logo" data-i18n="app_name"></h1>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-i18n="nav.dashboard"></a>
+      <a href="tasks.html" class="nav-link active" data-i18n="nav.tasks"></a>
+      <a href="habits.html" class="nav-link" data-i18n="nav.habits"></a>
+      <a href="settings.html" class="nav-link" data-i18n="nav.settings"></a>
+      <a href="#" id="logoutBtn" class="nav-link" data-i18n="nav.logout"></a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <header class="topbar">
+      <h2 data-i18n="tasks.title"></h2>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </header>
+
+    <section class="content">
+
+      <!-- Add Task -->
+      <div class="card">
+        <h3 data-i18n="tasks.add_title"></h3>
+
+        <div class="task-input">
+          <input
+            type="text"
+            id="taskInput"
+            data-i18n-placeholder="tasks.new_task"
+          />
+          <button id="addTaskBtn" class="btn primary" data-i18n="tasks.add_btn"></button>
+        </div>
+      </div>
+
+      <!-- Task List -->
+      <div class="card">
+        <h3 data-i18n="tasks.list_title"></h3>
+
+        <ul id="taskList" class="task-list"></ul>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- Bottom Nav (Mobile) -->
+<nav class="bottom-nav">
+  <a href="index.html">🏠</a>
+  <a href="tasks.html" class="active">✅</a>
+  <a href="habits.html">🔥</a>
+  <a href="settings.html">⚙️</a>
+</nav>
+
+<!-- JS -->
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+<script src="js/tasks.js"></script>
+
+</body>
+</html>
