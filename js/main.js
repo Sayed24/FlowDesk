@@ -1,146 +1,79 @@
-/* ===============================
-   FlowDesk — Main Global Logic
-   File: js/main.js
-   =============================== */
+/* ======================================================
+   FlowDesk Main App Bootstrap
+====================================================== */
 
-/* ---------- THEME (LIGHT / DARK) ---------- */
-const themeToggle = document.querySelector(".theme-toggle");
+const FlowDesk = {
+  protectedPages: [
+    "index.html",
+    "tasks.html",
+    "habits.html",
+    "settings.html"
+  ],
 
-function applyTheme(theme) {
-  if (theme === "dark") {
-    document.body.classList.add("dark");
-  } else {
-    document.body.classList.remove("dark");
-  }
-  localStorage.setItem("theme", theme);
-}
+  init() {
+    this.checkAuth();
+    this.initTheme();
+    this.bindLogout();
+  },
 
-function initTheme() {
-  const saved =
-    localStorage.getItem("theme") ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-  applyTheme(saved);
-}
+  /* ======================================================
+     AUTH GUARD
+  ====================================================== */
+  checkAuth() {
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+    const isAuthPage = currentPage === "auth.html";
+    const session = localStorage.getItem("flowdesk_session");
 
-themeToggle?.addEventListener("click", () => {
-  const next = document.body.classList.contains("dark") ? "light" : "dark";
-  applyTheme(next);
-});
-
-/* ---------- ACTIVE NAV LINK ---------- */
-function setActiveNav() {
-  const links = document.querySelectorAll(".sidebar a");
-  const current = location.pathname.split("/").pop();
-
-  links.forEach(link => {
-    if (link.getAttribute("href") === current) {
-      link.classList.add("active");
+    if (!session && this.protectedPages.includes(currentPage)) {
+      location.href = "auth.html";
+      return;
     }
-  });
-}
 
-/* ---------- AUTH GUARD ---------- */
-function requireAuth() {
-  const session = localStorage.getItem("session");
-  const isLoginPage = location.pathname.includes("login.html");
+    if (session && isAuthPage) {
+      location.href = "index.html";
+    }
+  },
 
-  if (!session && !isLoginPage) {
-    location.href = "login.html";
-  }
-}
-/* ===============================
-   FlowDesk — App Bootstrap
-   File: js/main.js
-   =============================== */
+  /* ======================================================
+     LOGOUT
+  ====================================================== */
+  bindLogout() {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (!logoutBtn) return;
 
-/* ---------- AUTH GUARD ---------- */
-if (typeof requireAuth === "function") {
-  requireAuth();
-}
+    logoutBtn.addEventListener("click", e => {
+      e.preventDefault();
+      localStorage.removeItem("flowdesk_session");
+      location.href = "auth.html";
+    });
+  },
 
-/* ---------- INIT APP ---------- */
-document.addEventListener("DOMContentLoaded", async () => {
-  /* Init IndexedDB */
-  if (typeof initDB === "function") {
-    try {
-      await initDB();
-      console.log("IndexedDB ready");
-    } catch (e) {
-      console.error("DB init failed", e);
+  /* ======================================================
+     THEME SYSTEM
+  ====================================================== */
+  initTheme() {
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("flowdesk_theme") || "light";
+
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    if (themeToggle) {
+      themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("flowdesk_theme", next);
+        themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
+      });
     }
   }
+};
 
-  /* ---------- ACTIVE NAV ---------- */
-  const current = location.pathname.split("/").pop() || "index.html";
-
-  document.querySelectorAll(".nav-link, .bottom-nav a").forEach(link => {
-    if (link.getAttribute("href") === current) {
-      link.classList.add("active");
-    }
-  });
-
-  /* ---------- THEME ---------- */
-  const toggle = document.querySelector(".theme-toggle");
-  const savedTheme = localStorage.getItem("flowdesk-theme");
-
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-  }
-
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      localStorage.setItem(
-        "flowdesk-theme",
-        document.body.classList.contains("dark") ? "dark" : "light"
-      );
-    });
-  }
-
-  /* ---------- LOGOUT ---------- */
-  const logoutBtn = document.querySelector("[data-logout]");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", logout);
-  }
-
-  /* ---------- FAB ---------- */
-  const fab = document.querySelector(".fab");
-  if (fab) {
-    fab.addEventListener("click", () => {
-      document.dispatchEvent(new CustomEvent("fab:click"));
-    });
-  }
-});
-
-/* ---------- LOGOUT ---------- */
-function logout() {
-  localStorage.removeItem("session");
-  location.href = "login.html";
-}
-
-/* ---------- LANGUAGE INIT ---------- */
-function initLanguage() {
-  const langSelect = document.getElementById("langSelect");
-  const savedLang = localStorage.getItem("lang") || "en";
-
-  if (typeof setLang === "function") {
-    setLang(savedLang);
-  }
-
-  if (langSelect) {
-    langSelect.value = savedLang;
-    langSelect.addEventListener("change", e => {
-      setLang(e.target.value);
-    });
-  }
-}
-
-/* ---------- GLOBAL INIT ---------- */
+/* ======================================================
+   DOM READY
+====================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
-  setActiveNav();
-  requireAuth();
-  initLanguage();
+  FlowDesk.init();
 });
