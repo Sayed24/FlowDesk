@@ -1,1 +1,117 @@
+/* =====================================================
+   FlowDesk — Layout System
+   Responsive • Mobile-first • Modern
+   File: css/layout.css
+   ===================================================== */
 
+/* ---------- APP SHELL ---------- */
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: 260px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: var(--space-6) var(--space-4);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: var(--z-sidebar);
+  transition: background var(--speed) var(--ease);
+}
+
+.logo {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-6);
+  color: var(--primary);
+}
+
+/* ---------- NAV ---------- */
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nav-link {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-weight: var(--weight-medium);
+  transition:
+    background var(--speed) var(--ease),
+    color var(--speed) var(--ease);
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+/* ---------- MAIN ---------- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  gap: var(--space-6);
+}
+
+/* ---------- TOPBAR ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------- GRID ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 900px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    padding: var(--space-2);
+    background: var(--surface);
+  }
+
+  nav {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-link {
+    padding: var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .main-content {
+    padding-bottom: 90px;
+  }
+}
