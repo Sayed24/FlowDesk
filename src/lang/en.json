@@ -1,1 +1,61 @@
+{
+  "app_name": "FlowDesk",
+  "tagline": "Offline Productivity Dashboard",
 
+  "nav": {
+    "dashboard": "Dashboard",
+    "tasks": "Tasks",
+    "habits": "Habits",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+
+  "dashboard": {
+    "tasks": "Tasks",
+    "habits": "Habits",
+    "focus": "Focus Time",
+    "streak": "Streak",
+    "active": "active",
+    "tracked": "tracked",
+    "today": "today",
+    "days": "days"
+  },
+
+  "tasks": {
+    "title": "Tasks",
+    "todo": "To Do",
+    "doing": "Doing",
+    "done": "Done",
+    "new_task": "New Task",
+    "edit_task": "Edit task title",
+    "delete_confirm": "Delete this task?"
+  },
+
+  "habits": {
+    "title": "Habits",
+    "new_habit": "Habit name",
+    "mark_done": "Mark Done",
+    "done": "✔ Done"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "toggle_theme": "Toggle Dark Mode",
+    "data": "Data",
+    "clear_data": "Clear All Data",
+    "account": "Account",
+    "clear_confirm": "This will delete all FlowDesk data. Continue?",
+    "cleared": "All data cleared. Reloading app."
+  },
+
+  "auth": {
+    "username": "Username",
+    "password": "Password",
+    "login": "Login / Register",
+    "missing": "Missing fields",
+    "invalid": "Invalid credentials",
+    "exists": "User already exists"
+  }
+}
