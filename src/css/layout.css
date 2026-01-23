@@ -1,117 +1,133 @@
-/* =====================================================
-   FlowDesk — Layout System
-   Responsive • Mobile-first • Modern
-   File: css/layout.css
-   ===================================================== */
+/* ======================================================
+   FlowDesk Layout
+====================================================== */
 
-/* ---------- APP SHELL ---------- */
-body {
+.app {
   display: flex;
   min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
 }
 
-/* ---------- SIDEBAR ---------- */
+/* ======================================================
+   SIDEBAR
+====================================================== */
+
 .sidebar {
-  width: 260px;
-  background: var(--surface);
+  width: var(--sidebar-width);
+  background: var(--surface-glass);
+  backdrop-filter: blur(14px);
   border-right: 1px solid var(--border);
-  padding: var(--space-6) var(--space-4);
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
   height: 100vh;
-  z-index: var(--z-sidebar);
-  transition: background var(--speed) var(--ease);
 }
 
 .logo {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-6);
-  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  padding: 0.4rem 0.6rem;
 }
 
-/* ---------- NAV ---------- */
-nav {
+/* Navigation */
+.nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0.4rem;
 }
 
 .nav-link {
-  padding: var(--space-3) var(--space-4);
+  padding: 0.7rem 0.9rem;
   border-radius: var(--radius-md);
-  color: var(--muted);
-  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+  font-weight: 500;
   transition:
     background var(--speed) var(--ease),
-    color var(--speed) var(--ease);
+    color var(--speed) var(--ease),
+    transform var(--speed-fast) var(--ease);
 }
 
-.nav-link.active,
 .nav-link:hover {
-  background: var(--primary-soft);
-  color: var(--primary);
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--brand);
 }
 
-/* ---------- MAIN ---------- */
-.main-content {
+.nav-link.active {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ======================================================
+   MAIN AREA
+====================================================== */
+
+.main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--space-6);
-  gap: var(--space-6);
+  padding: 1.5rem 2rem;
+  gap: 1.2rem;
 }
 
-/* ---------- TOPBAR ---------- */
+/* ======================================================
+   TOPBAR
+====================================================== */
+
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 0.5rem;
 }
 
-/* ---------- GRID ---------- */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-4);
+.topbar h2 {
+  font-weight: 600;
 }
 
-/* ---------- MOBILE ---------- */
+/* Theme Toggle */
+.theme-toggle {
+  font-size: 1.1rem;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.4rem 0.6rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--speed-fast) var(--ease),
+    box-shadow var(--speed) var(--ease);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ======================================================
+   CONTENT AREA
+====================================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ======================================================
+   MOBILE LAYOUT
+====================================================== */
+
 @media (max-width: 900px) {
-
-  body {
-    flex-direction: column;
-  }
-
   .sidebar {
-    position: fixed;
-    bottom: 0;
-    top: auto;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    border-right: none;
-    border-top: 1px solid var(--border);
-    padding: var(--space-2);
-    background: var(--surface);
-  }
-
-  nav {
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .nav-link {
-    padding: var(--space-2);
-    font-size: var(--text-xs);
-  }
-
-  .logo {
     display: none;
   }
 
-  .main-content {
-    padding-bottom: 90px;
+  .main {
+    padding: 1.2rem;
   }
 }
