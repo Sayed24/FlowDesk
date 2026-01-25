@@ -1,78 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="material" data-mode="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FlowDesk • Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • FlowDesk</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <!-- Base + Theme -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/material.css" />
+  <link rel="stylesheet" href="css/ios.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+
+  <!-- Core -->
+  <script defer src="js/config.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/router.js"></script>
+  <script defer src="js/app.js"></script>
+
+  <!-- UI + i18n -->
+  <script defer src="js/ui/themeToggle.js"></script>
+  <script defer src="js/i18n/i18n.js"></script>
+
+  <!-- Auth -->
+  <script defer src="js/auth/auth.js"></script>
+  <script defer src="js/auth/login.js"></script>
 </head>
 
-<body class="auth-body">
+<body>
+  <div id="app">
 
-  <div class="auth-container fade-in">
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="logo">
+        <h1 data-i18n="app_name">FlowDesk</h1>
+      </div>
 
-    <h1 class="auth-logo">FlowDesk</h1>
-    <p class="auth-subtitle">Offline Productivity Dashboard</p>
+      <div class="header-actions">
+        <select id="languageSelect">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fa">FA</option>
+        </select>
 
-    <form id="auth-form" class="auth-form">
+        <button id="themeToggle">🌙</button>
+        <button id="uiToggle">🎨</button>
+      </div>
+    </header>
 
-      <input
-        type="text"
-        id="username"
-        placeholder="Username"
-        required
-      />
+    <!-- MAIN -->
+    <main class="app-main auth">
+      <form class="auth-card" id="loginForm" novalidate>
+        <h2 data-i18n="login_title">Sign in</h2>
 
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        required
-      />
+        <div class="field">
+          <label data-i18n="email">Email</label>
+          <input type="email" id="email" required />
+          <span class="error"></span>
+        </div>
 
-      <button type="submit" class="btn primary">
-        Login / Register
-      </button>
+        <div class="field">
+          <label data-i18n="password">Password</label>
+          <input type="password" id="password" required />
+          <span class="error"></span>
+        </div>
 
-      <p id="auth-message" class="auth-message"></p>
+        <button type="submit" class="btn primary" data-i18n="login_button">
+          Login
+        </button>
 
-    </form>
+        <p class="switch">
+          <span data-i18n="register">Register</span>?
+          <a href="register.html">Create account</a>
+        </p>
+      </form>
+    </main>
 
   </div>
 
-  <!-- JS -->
-  <script src="js/auth.js"></script>
   <script>
-    const form = document.getElementById("auth-form");
-    const message = document.getElementById("auth-message");
-
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      let result;
-
-      if (!localStorage.getItem("flowdesk_user")) {
-        result = register(username, password);
-      } else {
-        result = login(username, password);
-      }
-
-      if (result.success) {
-        window.location.href = "index.html";
-      } else {
-        message.textContent = result.message;
-      }
+    document.addEventListener("DOMContentLoaded", () => {
+      App.init();
     });
   </script>
-
 </body>
 </html>
