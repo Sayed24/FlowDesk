@@ -1,126 +1,234 @@
 /* ======================================================
-   FlowDesk — Dashboard Styles
+   FlowDesk — Dashboard Styles (Complete)
 ====================================================== */
 
-/* --- GLOBAL --- */
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+/* ================= BASE ================= */
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f4f5f7;
-  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f6fb;
+  color: #111827;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* ================= HEADER ================= */
+.dashboard-header {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
-/* --- DASHBOARD LAYOUT --- */
+.dashboard-header h1 {
+  font-size: 18px;
+}
+
+.dashboard-header button {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ================= LAYOUT ================= */
 .dashboard-container {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 }
 
-/* Sidebar */
+/* ================= SIDEBAR ================= */
 .dashboard-sidebar {
   width: 220px;
-  background-color: #1f2937; /* Dark gray */
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  background: #1f2937;
+  color: #ffffff;
+  padding: 20px 12px;
 }
 
-.dashboard-sidebar h2 {
-  margin-bottom: 30px;
-  font-size: 24px;
+.dashboard-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .dashboard-sidebar a {
-  padding: 12px 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  transition: background 0.3s;
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .dashboard-sidebar a.active,
 .dashboard-sidebar a:hover {
-  background-color: #374151;
-  cursor: pointer;
+  background: #374151;
 }
 
-/* Main content */
+/* ================= MAIN ================= */
 .dashboard-main {
   flex: 1;
-  padding: 30px;
-  background-color: #f4f5f7;
+  padding: 24px;
 }
 
-/* Tabs */
 .tab-content {
   display: none;
-  animation: fadeIn 0.3s ease-in-out;
 }
 
 .tab-content.active {
   display: block;
 }
 
-/* Task & Project Items */
-.task-item, .project-item {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* ================= TASK INPUT ================= */
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-/* Settings Panel */
-#settingsPanel {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.task-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
 }
 
-/* Buttons */
-button {
-  padding: 10px 15px;
+.task-input button {
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
-  border-radius: 6px;
-  background-color: #2563eb; /* Blue */
-  color: #fff;
+  background: #2563eb;
+  color: #ffffff;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-button:hover {
-  background-color: #1d4ed8;
+.task-input button:hover {
+  background: #1d4ed8;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* ================= TASK LIST ================= */
+#taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Responsive */
+.task-item {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.task-item:hover {
+  transform: translateY(-1px);
+}
+
+.task-title {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Completed task */
+.task-item.done {
+  opacity: 0.6;
+}
+
+.task-item.done .task-title {
+  text-decoration: line-through;
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #9ca3af;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+/* Empty state */
+.muted {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================= PROJECTS ================= */
+.project-item {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+/* ================= SETTINGS ================= */
+#settingsPanel {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .dashboard-sidebar {
+    width: 180px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+
   .dashboard-container {
     flex-direction: column;
   }
 
   .dashboard-sidebar {
     width: 100%;
-    flex-direction: row;
+    padding: 10px;
+  }
+
+  .dashboard-sidebar ul {
+    display: flex;
+    gap: 6px;
     overflow-x: auto;
   }
 
   .dashboard-sidebar a {
     flex: 1;
     text-align: center;
-    margin-right: 10px;
+    white-space: nowrap;
+  }
+
+  .dashboard-main {
+    padding: 16px;
+  }
+
+  .task-input {
+    flex-direction: column;
+  }
+
+  .task-input button {
+    width: 100%;
   }
 }
-
