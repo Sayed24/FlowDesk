@@ -112,3 +112,35 @@ h1 {
 .mt-20 {
   margin-top: 20px;
 }
+/* ================= DARK MODE ================= */
+
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  --panel: #020617;
+  --text: #e5e7eb;
+  --border: #1e293b;
+  --primary: #3b82f6;
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container,
+.dashboard-header,
+.dashboard-main,
+.task-item,
+.project-item,
+#settingsPanel {
+  background: var(--panel);
+  border-color: var(--border);
+}
