@@ -1,77 +1,107 @@
 /* ======================================================
-   FlowDesk — Dashboard Controller
+   FlowDesk — Dashboard Controller (Tasks Enabled)
 ====================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Elements
+
+  /* ================= AUTH GUARD ================= */
+  const user = AuthService.getCurrentUser();
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  /* ================= ELEMENTS ================= */
   const tabs = document.querySelectorAll(".dashboard-sidebar a");
-  const tabContents = document.querySelectorAll(".tab-content");
+  const contents = document.querySelectorAll(".tab-content");
   const logoutBtn = document.getElementById("logoutBtn");
 
-  // --- TAB SWITCHING ---
+  const taskList = document.getElementById("taskList");
+
+  /* ================= TAB SWITCHING ================= */
   tabs.forEach(tab => {
-    tab.addEventListener("click", (e) => {
+    tab.addEventListener("click", e => {
       e.preventDefault();
-      const target = tab.dataset.tab;
 
-      // Remove active from all tabs & contents
       tabs.forEach(t => t.classList.remove("active"));
-      tabContents.forEach(c => c.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
 
-      // Activate selected
       tab.classList.add("active");
-      document.getElementById(target).classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
     });
   });
 
-  // --- LOGOUT ---
+  /* ================= LOGOUT ================= */
   logoutBtn.addEventListener("click", () => {
     AuthService.logout();
     window.location.href = "login.html";
   });
 
-  // --- LOAD TASKS & PROJECTS ---
-  const taskList = document.getElementById("taskList");
-  const projectList = document.getElementById("projectList");
+  /* ================= TASK UI ================= */
 
-  const tasks = [
-    { id: 1, title: "Design homepage", status: "In Progress" },
-    { id: 2, title: "Fix login bug", status: "Pending" },
-    { id: 3, title: "Deploy PWA", status: "Completed" },
-  ];
-
-  const projects = [
-    { id: 1, name: "Website Redesign", progress: "40%" },
-    { id: 2, name: "Mobile App", progress: "70%" },
-  ];
-
-  // Render tasks
-  taskList.innerHTML = tasks.map(task => `
-    <div class="task-item">
-      <strong>${task.title}</strong> - <em>${task.status}</em>
+  // Inject task input UI
+  taskList.insertAdjacentHTML("beforebegin", `
+    <div class="task-input">
+      <input type="text" id="newTaskInput" placeholder="Add a new task..." />
+      <button id="addTaskBtn">Add</button>
     </div>
-  `).join("");
+  `);
 
-  // Render projects
-  projectList.innerHTML = projects.map(proj => `
-    <div class="project-item">
-      <strong>${proj.name}</strong> - <em>${proj.progress} complete</em>
-    </div>
-  `).join("");
+  const newTaskInput = document.getElementById("newTaskInput");
+  const addTaskBtn = document.getElementById("addTaskBtn");
 
-  // --- SETTINGS PANEL ---
-  const settingsPanel = document.getElementById("settingsPanel");
-  settingsPanel.innerHTML = `
-    <p>Here you can customize your FlowDesk settings.</p>
-    <button id="clearDataBtn">Clear All Data</button>
-  `;
+  /* ================= RENDER TASKS ================= */
+  const renderTasks = () => {
+    const tasks = TaskService.getTasks();
 
-  document.getElementById("clearDataBtn").addEventListener("click", () => {
-    if (confirm("Are you sure you want to clear all tasks and projects?")) {
-      taskList.innerHTML = "";
-      projectList.innerHTML = "";
-      alert("All data cleared!");
+    if (tasks.length === 0) {
+      taskList.innerHTML = `<p class="muted">No tasks yet</p>`;
+      return;
     }
+
+    taskList.innerHTML = tasks.map(task => `
+      <div class="task-item ${task.completed ? "done" : ""}">
+        <span data-id="${task.id}" class="task-title">
+          ${task.title}
+        </span>
+        <button data-delete="${task.id}" class="delete-btn">✕</button>
+      </div>
+    `).join("");
+  };
+
+  /* ================= ADD TASK ================= */
+  addTaskBtn.addEventListener("click", () => {
+    const title = newTaskInput.value.trim();
+    if (!title) return;
+
+    TaskService.addTask(title);
+    newTaskInput.value = "";
+    renderTasks();
   });
 
+  newTaskInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") addTaskBtn.click();
+  });
+
+  /* ================= TASK ACTIONS ================= */
+  taskList.addEventListener("click", e => {
+
+    // Toggle complete
+    if (e.target.classList.contains("task-title")) {
+      TaskService.toggleTask(e.target.dataset.id);
+      renderTasks();
+    }
+
+    // Delete
+    if (e.target.dataset.delete) {
+      TaskService.deleteTask(e.target.dataset.delete);
+      renderTasks();
+    }
+
+  });
+
+  /* ================= INITIAL LOAD ================= */
+  renderTasks();
+
 });
+
