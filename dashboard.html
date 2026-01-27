@@ -1,48 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>FlowDesk — Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
-  <header class="dashboard-header">
-    <h1>FlowDesk Dashboard</h1>
-    <button id="logoutBtn">Logout</button>
+
+  <!-- ===== MOBILE HEADER ===== -->
+  <header class="mobile-header">
+    <button id="menuToggle">☰</button>
+    <h1>FlowDesk</h1>
+    <button id="logoutBtnMobile">⎋</button>
   </header>
 
-  <aside class="dashboard-sidebar">
-    <ul>
-      <li><a href="#" class="active" data-tab="overview">Overview</a></li>
-      <li><a href="#" data-tab="tasks">Tasks</a></li>
-      <li><a href="#" data-tab="projects">Projects</a></li>
-      <li><a href="#" data-tab="settings">Settings</a></li>
-    </ul>
-  </aside>
+  <!-- ===== DASHBOARD WRAPPER ===== -->
+  <div class="dashboard-container">
 
-  <main class="dashboard-main">
-    <section id="overview" class="tab-content active">
-      <h2>Overview</h2>
-      <p>Welcome to your FlowDesk dashboard!</p>
-    </section>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="dashboard-sidebar" id="sidebar">
+      <h2>FlowDesk</h2>
+      <nav>
+        <a href="#" class="active" data-tab="overview">Overview</a>
+        <a href="#" data-tab="tasks">Tasks</a>
+        <a href="#" data-tab="projects">Projects</a>
+        <a href="#" data-tab="settings">Settings</a>
+      </nav>
 
-    <section id="tasks" class="tab-content">
-      <h2>Tasks</h2>
-      <div id="taskList"></div>
-    </section>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
 
-    <section id="projects" class="tab-content">
-      <h2>Projects</h2>
-      <div id="projectList"></div>
-    </section>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="dashboard-main">
 
-    <section id="settings" class="tab-content">
-      <h2>Settings</h2>
-      <div id="settingsPanel"></div>
-    </section>
-  </main>
+      <section id="overview" class="tab-content active">
+        <h2>Overview</h2>
+        <p>Welcome to your FlowDesk dashboard.</p>
+      </section>
 
+      <section id="tasks" class="tab-content">
+        <h2>Tasks</h2>
+        <div id="taskList"></div>
+      </section>
+
+      <section id="projects" class="tab-content">
+        <h2>Projects</h2>
+        <div id="projectList"></div>
+      </section>
+
+      <section id="settings" class="tab-content">
+        <h2>Settings</h2>
+        <div id="settingsPanel"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/core/auth.service.js"></script>
   <script src="js/dashboard/dashboard.js"></script>
+
+  <!-- Mobile behavior -->
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    const logoutMobile = document.getElementById("logoutBtnMobile");
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
+    logoutMobile.addEventListener("click", () => {
+      AuthService.logout();
+      window.location.href = "login.html";
+    });
+  </script>
+
 </body>
 </html>
