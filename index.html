@@ -2,21 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FlowDesk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FlowDesk — Smart Productivity Dashboard</title>
+
+  <!-- App Styles -->
+  <link rel="stylesheet" href="assets/css/auth.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+
+  <!-- App Meta -->
+  <meta name="description" content="FlowDesk is a smart productivity dashboard to manage tasks, projects, and time efficiently." />
 </head>
-<body>
 
-<script src="js/core/auth.service.js"></script>
-<script>
-  const user = AuthService.getCurrentUser();
+<body class="landing">
 
-  if (user) {
-    window.location.href = "dashboard.html";
-  } else {
-    window.location.href = "login.html";
-  }
-</script>
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="assets/icons/logo.svg" alt="FlowDesk Logo" />
+        <span>FlowDesk</span>
+      </div>
+
+      <div class="nav-actions">
+        <a href="auth/login.html" class="btn ghost">Login</a>
+        <a href="auth/register.html" class="btn primary">Get Started</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <h1>Work Smarter.<br />Stay Organized.</h1>
+      <p>
+        FlowDesk helps you manage tasks, track progress, and stay productive —
+        all in one clean dashboard.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="auth/register.html" class="btn primary large">Create Free Account</a>
+        <a href="auth/login.html" class="btn secondary large">Sign In</a>
+      </div>
+    </section>
+  </header>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="features">
+    <div class="feature">
+      <h3>📋 Task Management</h3>
+      <p>Create, drag, and organize tasks effortlessly.</p>
+    </div>
+
+    <div class="feature">
+      <h3>📅 Smart Calendar</h3>
+      <p>Visualize deadlines and plan your schedule.</p>
+    </div>
+
+    <div class="feature">
+      <h3>📊 Reports</h3>
+      <p>Track productivity and performance insights.</p>
+    </div>
+
+    <div class="feature">
+      <h3>🔐 Secure & Offline</h3>
+      <p>Local authentication with persistent sessions.</p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <p>© 2026 FlowDesk. All rights reserved.</p>
+  </footer>
+
+  <!-- ================= LOGIC ================= -->
+  <script>
+    /**
+     * Auto redirect if already logged in
+     */
+    (function () {
+      const session = localStorage.getItem("flowdesk_session");
+      if (session) {
+        window.location.href = "dashboard/dashboard.html";
+      }
+    })();
+  </script>
 
 </body>
 </html>
