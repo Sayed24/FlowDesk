@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
     return;
   }
+   
+   ThemeService.init();
+
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("click", () => {
+  ThemeService.toggleTheme();
+});
+
 
   /* ================= ELEMENTS ================= */
   const tabs = document.querySelectorAll(".dashboard-sidebar a");
