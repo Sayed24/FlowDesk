@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let hasError = false;
 
     if (!email) {
-      showError(emailInput, i18n ? i18n.current && "error_required" : "Required");
+      showError(emailInput, "This field is required");
       hasError = true;
     }
 
     if (!password) {
-      showError(passwordInput, i18n ? i18n.current && "error_required" : "Required");
+      showError(passwordInput, "This field is required");
       hasError = true;
     }
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       await AuthService.login(email, password);
       window.location.href = "dashboard.html";
     } catch (err) {
-      showError(passwordInput, err.message);
+      showError(emailInput, err.message);
     }
   });
 
