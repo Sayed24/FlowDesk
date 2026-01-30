@@ -1,70 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowDesk — Dashboard</title>
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Mega Platform</title>
+  <link rel="stylesheet" href="assets/css/global.css" />
 </head>
 <body>
-
-  <!-- =========================
-       Sidebar / Desktop Navigation
-  =========================== -->
-  <aside class="sidebar">
-    <div class="logo">FlowDesk</div>
-    <nav class="nav-desktop">
-      <ul>
-        <li><a href="index.html" class="active">Dashboard</a></li>
-        <li><a href="tasks.html">Tasks</a></li>
-        <li><a href="notes.html">Notes</a></li>
-        <li><a href="goals.html">Goals</a></li>
-        <li><a href="habits.html">Habits</a></li>
-        <li><a href="settings.html">Settings</a></li>
-      </ul>
+  <header class="topbar">
+    <h1>Developer Mega Platform</h1>
+    <nav>
+      <a href="github-analyzer/index.html">GitHub Analyzer</a>
+      <a href="task-dashboard/index.html">Task Dashboard</a>
+      <a href="finance-tracker/index.html">Finance Tracker</a>
+      <a href="task-organizer/index.html">Task Organizer</a>
+      <a href="portfolio/index.html">Portfolio</a>
     </nav>
-  </aside>
+  </header>
 
-  <!-- =========================
-       Main Content Area
-  =========================== -->
-  <div class="main-container">
+  <main class="container">
+    <section class="hero">
+      <h2>All-in-One Professional Web Platform</h2>
+      <p>Real-world dashboards, tools, and portfolio projects built with pure HTML, CSS, and JavaScript.</p>
+    </section>
 
-    <!-- Header -->
-    <header class="header">
-      <h1>Welcome to FlowDesk</h1>
-      <button id="theme-toggle">🌙</button>
-    </header>
+    <section class="apps">
+      <div class="card" onclick="location.href='github-analyzer/index.html'">
+        <h3>GitHub Profile Analyzer</h3>
+        <p>Analyze GitHub users, repos, charts, and insights.</p>
+      </div>
+      <div class="card" onclick="location.href='task-dashboard/index.html'">
+        <h3>Task Management Dashboard</h3>
+        <p>Admin/User roles, drag & drop, calendar, reports.</p>
+      </div>
+      <div class="card" onclick="location.href='finance-tracker/index.html'">
+        <h3>Finance Tracker</h3>
+        <p>Track income & expenses with charts and CSV export.</p>
+      </div>
+      <div class="card" onclick="location.href='task-organizer/index.html'">
+        <h3>Task Organizer</h3>
+        <p>Simple drag-and-drop task organizer with dark mode.</p>
+      </div>
+      <div class="card" onclick="location.href='portfolio/index.html'">
+        <h3>Portfolio</h3>
+        <p>Professional multi-page developer portfolio.</p>
+      </div>
+    </section>
+  </main>
 
-    <!-- Content -->
-    <main class="content">
-      <section class="dashboard-widgets">
-        <div class="widget-card">Tasks Overview</div>
-        <div class="widget-card">Notes Overview</div>
-        <div class="widget-card">Goals Overview</div>
-        <div class="widget-card">Habits Overview</div>
-      </section>
-    </main>
+  <footer>
+    <p>© 2026 Developer Mega Platform</p>
+  </footer>
 
-    <!-- Floating Action Button -->
-    <button class="fab" id="fab">➕</button>
-
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="nav-mobile">
-      <a href="index.html" class="active">🏠</a>
-      <a href="tasks.html">✅</a>
-      <a href="notes.html">📝</a>
-      <a href="goals.html">🎯</a>
-      <a href="habits.html">🔥</a>
-      <a href="settings.html">⚙️</a>
-    </nav>
-
-  </div>
-
-  <!-- JS -->
-  <script src="js/main.js" type="module"></script>
+  <script src="assets/js/global.js"></script>
 </body>
 </html>
