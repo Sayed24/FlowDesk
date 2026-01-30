@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>FlowDesk — Tasks</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
 
+<aside class="sidebar">
+  <div class="logo">FlowDesk</div>
+  <nav class="nav-desktop">
+    <a href="index.html">Dashboard</a>
+    <a href="tasks.html" class="active">Tasks</a>
+    <a href="notes.html">Notes</a>
+    <a href="goals.html">Goals</a>
+    <a href="habits.html">Habits</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+</aside>
+
+<div class="main-container">
+  <header class="header">
+    <h1>Tasks</h1>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main class="content">
+    <div id="taskList" class="dashboard-widgets"></div>
+  </main>
+
+  <button class="fab" id="addTaskBtn">➕</button>
+
+  <nav class="nav-mobile">
+    <a href="index.html">🏠</a>
+    <a href="tasks.html" class="active">✅</a>
+    <a href="notes.html">📝</a>
+    <a href="goals.html">🎯</a>
+    <a href="habits.html">🔥</a>
+    <a href="settings.html">⚙️</a>
+  </nav>
+</div>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/tasks.js"></script>
+</body>
+</html>
