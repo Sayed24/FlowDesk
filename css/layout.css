@@ -1,1 +1,113 @@
+/* ==========================
+   Layout Styles
+============================= */
 
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar (Desktop) */
+.sidebar {
+  width: 240px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-lg);
+  display: none;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-lg);
+}
+
+.nav-desktop ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-desktop a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  transition: background var(--transition-fast);
+}
+
+.nav-desktop a.active,
+.nav-desktop a:hover {
+  background: rgba(108,99,255,0.1);
+  color: var(--color-primary);
+}
+
+/* Main Container */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-dropdown);
+  background: var(--color-surface);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: var(--space-lg);
+}
+
+/* Dashboard widgets */
+.dashboard-widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Mobile Bottom Navigation */
+.nav-mobile {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  background: var(--color-surface);
+  padding: var(--space-sm) 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.nav-mobile a {
+  font-size: var(--font-size-lg);
+  padding: var(--space-xs);
+  color: var(--color-text-secondary);
+}
+
+.nav-mobile a.active {
+  color: var(--color-primary);
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 900px) {
+  .sidebar {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .content {
+    padding: var(--space-xl);
+  }
+}
