@@ -1,1 +1,62 @@
 
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.goal-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: 0.2s;
+}
+
+.goal-card.completed {
+  opacity: 0.7;
+}
+
+.goal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.goal-card h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.goal-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: var(--space-md);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.goal-actions {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  display: flex;
+  gap: 6px;
+}
+
+.goal-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
