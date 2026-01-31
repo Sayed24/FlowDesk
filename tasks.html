@@ -1,50 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FlowDesk — Tasks</title>
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk • Tasks</title>
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/tasks.css" />
 </head>
 <body>
 
-<aside class="sidebar">
-  <div class="logo">FlowDesk</div>
-  <nav class="nav-desktop">
-    <a href="index.html">Dashboard</a>
-    <a href="tasks.html" class="active">Tasks</a>
-    <a href="notes.html">Notes</a>
-    <a href="goals.html">Goals</a>
-    <a href="habits.html">Habits</a>
-    <a href="settings.html">Settings</a>
-  </nav>
-</aside>
-
-<div class="main-container">
-  <header class="header">
-    <h1>Tasks</h1>
-    <button id="theme-toggle">🌙</button>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <h1>FlowDesk</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="tasks.html" class="active">Tasks</a>
+      <a href="notes.html">Notes</a>
+      <a href="goals.html">Goals</a>
+      <a href="habits.html">Habits</a>
+      <a href="settings.html">Settings</a>
+    </nav>
   </header>
 
-  <main class="content">
-    <div id="taskList" class="dashboard-widgets"></div>
+  <!-- MAIN -->
+  <main class="container">
+
+    <section class="hero">
+      <h2>Task Board</h2>
+      <p>Drag, drop, and organize your work like a real product team.</p>
+    </section>
+
+    <button class="btn" id="addTaskBtn">+ New Task</button>
+
+    <!-- KANBAN BOARD -->
+    <section class="kanban">
+
+      <div class="column" data-status="todo">
+        <h3>Todo</h3>
+        <div class="task-list" id="todoList"></div>
+      </div>
+
+      <div class="column" data-status="progress">
+        <h3>In Progress</h3>
+        <div class="task-list" id="progressList"></div>
+      </div>
+
+      <div class="column" data-status="done">
+        <h3>Done</h3>
+        <div class="task-list" id="doneList"></div>
+      </div>
+
+    </section>
+
   </main>
 
-  <button class="fab" id="addTaskBtn">➕</button>
+  <!-- TASK MODAL -->
+  <div id="taskModal" class="modal hidden">
+    <div class="modal-box">
+      <h3 id="taskModalTitle">New Task</h3>
+      <input type="text" id="taskTitle" placeholder="Task title" />
+      <textarea id="taskDesc" placeholder="Task description"></textarea>
+      <select id="taskStatus">
+        <option value="todo">Todo</option>
+        <option value="progress">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn" id="saveTaskBtn">Save</button>
+        <button class="btn danger" id="cancelTaskBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-  <nav class="nav-mobile">
-    <a href="index.html">🏠</a>
-    <a href="tasks.html" class="active">✅</a>
-    <a href="notes.html">📝</a>
-    <a href="goals.html">🎯</a>
-    <a href="habits.html">🔥</a>
-    <a href="settings.html">⚙️</a>
-  </nav>
-</div>
+  <footer>
+    © 2026 FlowDesk
+  </footer>
 
-<script type="module" src="js/main.js"></script>
-<script type="module" src="js/tasks.js"></script>
+  <script src="assets/js/tasks.js"></script>
 </body>
 </html>
