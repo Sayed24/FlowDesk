@@ -1,122 +1,112 @@
+let notes = [];
+let editingId = null;
 
-// FlowDesk Notes Module
-// Full CRUD with LocalStorage, modal support, and theme awareness
+const grid = document.getElementById("notesGrid");
+const addBtn = document.getElementById("addNoteBtn");
 
-const notesKey = 'flowdesk_notes';
-let notes = JSON.parse(localStorage.getItem(notesKey)) || [];
-let editingNoteId = null;
+const modal = document.getElementById("noteModal");
+const closeBtn = document.getElementById("closeNoteModal");
+const saveBtn = document.getElementById("saveNote");
 
-// Elements
-const notesContainer = document.getElementById('notesContainer');
-const noteModal = document.getElementById('noteModal');
-const noteForm = document.getElementById('noteForm');
-const noteTitleInput = document.getElementById('noteTitle');
-const noteBodyInput = document.getElementById('noteBody');
-const openNoteBtn = document.getElementById('openNoteModal');
-const closeNoteBtn = document.getElementById('closeNoteModal');
+const titleInput = document.getElementById("noteTitle");
+const contentInput = document.getElementById("noteContent");
+const tagsInput = document.getElementById("noteTags");
 
-// Utilities
-function saveNotes() {
-  localStorage.setItem(notesKey, JSON.stringify(notes));
-}
+load();
+render();
 
-function generateId() {
-  return Date.now().toString();
-}
-
-// Render
-function renderNotes() {
-  if (!notesContainer) return;
-  notesContainer.innerHTML = '';
-
-  if (notes.length === 0) {
-    notesContainer.innerHTML = '<p class="empty">No notes yet. Create one ✍️</p>';
-    return;
-  }
-
-  notes.forEach(note => {
-    const card = document.createElement('div');
-    card.className = 'note-card';
-
-    card.innerHTML = `
-      <h3>${note.title}</h3>
-      <p>${note.body}</p>
-      <div class="note-actions">
-        <button data-edit="${note.id}">Edit</button>
-        <button data-delete="${note.id}" class="danger">Delete</button>
-      </div>
-    `;
-
-    notesContainer.appendChild(card);
-  });
-}
+// Events
+addBtn.onclick = () => openModal();
+closeBtn.onclick = closeModal;
+saveBtn.onclick = saveNote;
 
 // Modal
 function openModal(note = null) {
-  noteModal.classList.add('active');
+  editingId = note ? note.id : null;
 
-  if (note) {
-    editingNoteId = note.id;
-    noteTitleInput.value = note.title;
-    noteBodyInput.value = note.body;
-  } else {
-    editingNoteId = null;
-    noteForm.reset();
-  }
+  titleInput.value = note?.title || "";
+  contentInput.value = note?.content || "";
+  tagsInput.value = note?.tags?.join(", ") || "";
+
+  modal.classList.remove("hidden");
 }
 
 function closeModal() {
-  noteModal.classList.remove('active');
-  editingNoteId = null;
+  modal.classList.add("hidden");
 }
 
-// Events
-openNoteBtn?.addEventListener('click', () => openModal());
-closeNoteBtn?.addEventListener('click', closeModal);
+// CRUD
+function saveNote() {
+  const title = titleInput.value.trim();
+  if (!title) return alert("Title required");
 
-noteForm?.addEventListener('submit', e => {
-  e.preventDefault();
+  const note = {
+    id: editingId || crypto.randomUUID(),
+    title,
+    content: contentInput.value,
+    tags: tagsInput.value.split(",").map(t => t.trim()).filter(Boolean),
+    pinned: false,
+    createdAt: Date.now()
+  };
 
-  const title = noteTitleInput.value.trim();
-  const body = noteBodyInput.value.trim();
-
-  if (!title || !body) return;
-
-  if (editingNoteId) {
-    notes = notes.map(n =>
-      n.id === editingNoteId ? { ...n, title, body } : n
-    );
+  if (editingId) {
+    notes = notes.map(n => n.id === editingId ? { ...n, ...note } : n);
   } else {
-    notes.unshift({
-      id: generateId(),
-      title,
-      body,
-      createdAt: new Date().toISOString()
-    });
+    notes.push(note);
   }
 
-  saveNotes();
-  renderNotes();
+  persist();
+  render();
   closeModal();
-});
+}
 
-notesContainer?.addEventListener('click', e => {
-  const editId = e.target.dataset.edit;
-  const deleteId = e.target.dataset.delete;
+function deleteNote(id) {
+  if (!confirm("Delete this note?")) return;
+  notes = notes.filter(n => n.id !== id);
+  persist();
+  render();
+}
 
-  if (editId) {
-    const note = notes.find(n => n.id === editId);
-    if (note) openModal(note);
-  }
+function togglePin(id) {
+  notes = notes.map(n =>
+    n.id === id ? { ...n, pinned: !n.pinned } : n
+  );
+  persist();
+  render();
+}
 
-  if (deleteId) {
-    if (confirm('Delete this note?')) {
-      notes = notes.filter(n => n.id !== deleteId);
-      saveNotes();
-      renderNotes();
-    }
-  }
-});
+// Render
+function render() {
+  grid.innerHTML = "";
 
-// Init
-renderNotes();
+  notes
+    .sort((a,b) => b.pinned - a.pinned)
+    .forEach(note => {
+      const card = document.createElement("div");
+      card.className = `note-card ${note.pinned ? "pinned" : ""}`;
+
+      card.innerHTML = `
+        <h3>${note.title}</h3>
+        <p>${note.content}</p>
+        <div class="note-tags">${note.tags.join(" • ")}</div>
+
+        <div class="note-actions">
+          <button onclick="(${togglePin})('${note.id}')">📌</button>
+          <button onclick="(${() => openModal(note)})()">✏️</button>
+          <button onclick="(${deleteNote})('${note.id}')">🗑️</button>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+}
+
+// Storage
+function persist() {
+  localStorage.setItem("flowdesk_notes", JSON.stringify(notes));
+}
+
+function load() {
+  const data = localStorage.getItem("flowdesk_notes");
+  if (data) notes = JSON.parse(data);
+}
