@@ -1,57 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlowDesk • Notes</title>
-  <link rel="stylesheet" href="assets/css/global.css" />
+  <title>FlowDesk — Notes</title>
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/notes.css" />
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <h1>FlowDesk</h1>
-    <nav>
-      <a href="index.html">Dashboard</a>
-      <a href="tasks.html">Tasks</a>
-      <a href="notes.html" class="active">Notes</a>
-      <a href="goals.html">Goals</a>
-      <a href="habits.html">Habits</a>
-      <a href="settings.html">Settings</a>
-    </nav>
+<aside class="sidebar">
+  <div class="logo">FlowDesk</div>
+  <nav class="nav-desktop">
+    <a href="index.html">Dashboard</a>
+    <a href="tasks.html">Tasks</a>
+    <a href="notes.html" class="active">Notes</a>
+    <a href="goals.html">Goals</a>
+    <a href="habits.html">Habits</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+</aside>
+
+<div class="main-container">
+  <header class="header">
+    <h1>Notes</h1>
+    <button id="theme-toggle">🌙</button>
   </header>
 
-  <!-- MAIN -->
-  <main class="container">
-
-    <section class="hero">
-      <h2>Your Notes</h2>
-      <p>Capture ideas, reminders, and important thoughts — everything stays saved automatically.</p>
-    </section>
-
-    <button class="btn" id="addNoteBtn">+ New Note</button>
-
-    <section class="apps" id="notesGrid"></section>
-
+  <main class="content">
+    <div id="notesGrid" class="notes-grid"></div>
   </main>
 
-  <!-- NOTE MODAL -->
-  <div id="noteModal" class="modal hidden">
-    <div class="modal-box">
-      <h3 id="modalTitle">New Note</h3>
-      <input type="text" id="noteTitle" placeholder="Note title" />
-      <textarea id="noteContent" placeholder="Write your note..."></textarea>
-      <div class="modal-actions">
-        <button class="btn" id="saveNoteBtn">Save</button>
-        <button class="btn danger" id="cancelNoteBtn">Cancel</button>
-      </div>
+  <button class="fab" id="addNoteBtn">➕</button>
+
+  <nav class="nav-mobile">
+    <a href="index.html">🏠</a>
+    <a href="tasks.html">✅</a>
+    <a href="notes.html" class="active">📝</a>
+    <a href="goals.html">🎯</a>
+    <a href="habits.html">🔥</a>
+    <a href="settings.html">⚙️</a>
+  </nav>
+</div>
+
+<!-- Modal -->
+<div id="noteModal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle">New Note</h2>
+
+    <input id="noteTitle" placeholder="Title" />
+    <textarea id="noteContent" placeholder="Write in Markdown..."></textarea>
+    <input id="noteTags" placeholder="Tags (comma separated)" />
+
+    <div class="modal-actions">
+      <button id="saveNote" class="btn">Save</button>
+      <button id="closeNoteModal" class="btn btn-danger">Cancel</button>
     </div>
   </div>
+</div>
 
-  <footer>
-    © 2026 FlowDesk
-  </footer>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/notes.js"></script>
 
-  <script src="assets/js/notes.js"></script>
 </body>
 </html>
