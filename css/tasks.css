@@ -1,1 +1,90 @@
 
+/* ==============================
+   TASKS / KANBAN STYLES
+================================ */
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.column {
+  background: linear-gradient(160deg, #020617, #020617);
+  border: 1px solid #1f2937;
+  border-radius: var(--radius);
+  padding: 18px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column h3 {
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.task-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: grab;
+  transition: 0.2s;
+}
+
+.task:active {
+  cursor: grabbing;
+}
+
+.task h4 {
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.task p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.task:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.column.drag-over {
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+/* ==============================
+   MODAL (reuse global modal base)
+================================ */
+.modal select {
+  width: 100%;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* ==============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .kanban {
+    grid-template-columns: 1fr;
+  }
+}
