@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>FlowDesk — Habits</title>
 
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/habits.css" />
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">FlowDesk</div>
+  <nav class="nav-desktop">
+    <a href="index.html">Dashboard</a>
+    <a href="tasks.html">Tasks</a>
+    <a href="notes.html">Notes</a>
+    <a href="goals.html">Goals</a>
+    <a href="habits.html" class="active">Habits</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+</aside>
+
+<div class="main-container">
+  <header class="header">
+    <h1>Habits</h1>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main class="content">
+    <div id="habitsGrid" class="habits-grid"></div>
+  </main>
+
+  <button class="fab" id="addHabitBtn">➕</button>
+
+  <nav class="nav-mobile">
+    <a href="index.html">🏠</a>
+    <a href="tasks.html">✅</a>
+    <a href="notes.html">📝</a>
+    <a href="goals.html">🎯</a>
+    <a href="habits.html" class="active">🔥</a>
+    <a href="settings.html">⚙️</a>
+  </nav>
+</div>
+
+<!-- Modal -->
+<div id="habitModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>New Habit</h2>
+
+    <input id="habitTitle" placeholder="Habit name" />
+
+    <div class="modal-actions">
+      <button id="saveHabit" class="btn">Save</button>
+      <button id="closeHabitModal" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/habits.js"></script>
+
+</body>
+</html>
