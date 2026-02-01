@@ -1,1 +1,48 @@
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.habit-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: 0.2s;
+}
+
+.habit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.habit-card h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.streak {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f97316;
+  margin-bottom: var(--space-sm);
+}
+
+.check-btn {
+  margin-top: var(--space-sm);
+  width: 100%;
+}
+
+.habit-actions {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+}
+
+.habit-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
