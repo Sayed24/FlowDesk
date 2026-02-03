@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings – FlowDesk</title>
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+<h1>Settings</h1>
+
+<h3>Theme</h3>
+<input type="color" id="themePicker">
+
+<h3>Backup</h3>
+<button id="export">Export</button>
+<input type="file" id="import">
+
+<script src="js/theme.js"></script>
+<script src="js/backup.js"></script>
+
+<script>
+document.getElementById("themePicker").oninput = e =>
+  setTheme(e.target.value);
+
+document.getElementById("export").onclick = exportData;
+document.getElementById("import").onchange = e =>
+  importData(e.target.files[0]);
+</script>
+
+</body>
+</html>
 
