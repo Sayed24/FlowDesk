@@ -1,70 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowDesk — Dashboard</title>
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
+  <meta charset="UTF-8" />
+  <title>FlowDesk</title>
+  <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-  <!-- =========================
-       Sidebar / Desktop Navigation
-  =========================== -->
-  <aside class="sidebar">
-    <div class="logo">FlowDesk</div>
-    <nav class="nav-desktop">
-      <ul>
-        <li><a href="index.html" class="active">Dashboard</a></li>
-        <li><a href="tasks.html">Tasks</a></li>
-        <li><a href="notes.html">Notes</a></li>
-        <li><a href="goals.html">Goals</a></li>
-        <li><a href="habits.html">Habits</a></li>
-        <li><a href="settings.html">Settings</a></li>
-      </ul>
-    </nav>
-  </aside>
+<nav class="sidebar">
+  <h2>FlowDesk</h2>
+  <a href="index.html">Dashboard</a>
+  <a href="tasks.html">Tasks</a>
+  <a href="notes.html">Notes</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="settings.html">Settings</a>
+</nav>
 
-  <!-- =========================
-       Main Content Area
-  =========================== -->
-  <div class="main-container">
+<main class="content">
+  <h1>Dashboard</h1>
 
-    <!-- Header -->
-    <header class="header">
-      <h1>Welcome to FlowDesk</h1>
-      <button id="theme-toggle">🌙</button>
-    </header>
+  <section class="dashboard-widgets">
+    <div class="widget-card">✅ Tasks<br><strong id="tasksCount">0</strong></div>
+    <div class="widget-card">📝 Notes<br><strong id="notesCount">0</strong></div>
+    <div class="widget-card">📅 Events<br><strong id="eventsCount">0</strong></div>
+  </section>
+</main>
 
-    <!-- Content -->
-    <main class="content">
-      <section class="dashboard-widgets">
-        <div class="widget-card">Tasks Overview</div>
-        <div class="widget-card">Notes Overview</div>
-        <div class="widget-card">Goals Overview</div>
-        <div class="widget-card">Habits Overview</div>
-      </section>
-    </main>
-
-    <!-- Floating Action Button -->
-    <button class="fab" id="fab">➕</button>
-
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="nav-mobile">
-      <a href="index.html" class="active">🏠</a>
-      <a href="tasks.html">✅</a>
-      <a href="notes.html">📝</a>
-      <a href="goals.html">🎯</a>
-      <a href="habits.html">🔥</a>
-      <a href="settings.html">⚙️</a>
-    </nav>
-
-  </div>
-
-  <!-- JS -->
-  <script src="js/main.js" type="module"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/main.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/shortcuts.js"></script>
 </body>
 </html>
