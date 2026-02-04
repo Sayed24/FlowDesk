@@ -1,20 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FlowDesk – Smart Task Management</title>
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/components.css" />
-<link rel="stylesheet" href="css/themes.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk — Dashboard</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
 </head>
-<body class="theme-light">
-<main class="center">
-<h1>FlowDesk</h1>
-<p>Smart productivity platform</p>
-<a href="dashboard.html?demo=true" class="btn-primary">Try Demo</a>
-<a href="login.html" class="btn-outline">Login</a>
-</main>
+<body>
+
+  <!-- Sidebar (Desktop) -->
+  <aside class="sidebar">
+    <div class="logo">FlowDesk</div>
+    <nav class="nav-desktop">
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="tasks.html">Tasks</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="notes.html">Notes</a>
+      <a href="goals.html">Goals</a>
+      <a href="habits.html">Habits</a>
+      <a href="team.html">Team</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Dashboard</h1>
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+      <section class="dashboard-widgets">
+        <div class="widget-card" id="widget-tasks">
+          <h3>Tasks</h3>
+          <p><span id="taskCount">0</span> total</p>
+        </div>
+        <div class="widget-card" id="widget-today">
+          <h3>Today</h3>
+          <p id="todayTasks">No tasks due</p>
+        </div>
+        <div class="widget-card" id="widget-goals">
+          <h3>Goals</h3>
+          <p><span id="goalProgress">0%</span> complete</p>
+        </div>
+        <div class="widget-card" id="widget-habits">
+          <h3>Habits</h3>
+          <p><span id="habitStreak">0</span> day streak</p>
+        </div>
+      </section>
+
+      <section class="dashboard-charts">
+        <canvas id="taskChart" height="140"></canvas>
+      </section>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="fab" aria-label="Quick add">＋</button>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="nav-mobile">
+      <a href="index.html" class="active">🏠</a>
+      <a href="tasks.html">✅</a>
+      <a href="calendar.html">📅</a>
+      <a href="team.html">👥</a>
+      <a href="settings.html">⚙️</a>
+    </nav>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js" type="module"></script>
+  <script src="js/dashboard.js" type="module"></script>
 </body>
 </html>
