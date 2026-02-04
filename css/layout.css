@@ -1,113 +1,233 @@
-/* ==========================
-   Layout Styles
-============================= */
+/* =========================================================
+   FlowDesk – Layout Styles
+   File: css/layout.css
+   Depends on: base.css
+========================================================= */
 
-body {
+/* ====== APP SHELL ====== */
+.app {
   display: flex;
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+  width: 260px;
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav a.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ====== MAIN CONTENT ====== */
+.main {
+  margin-left: 260px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-/* Sidebar (Desktop) */
-.sidebar {
-  width: 240px;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-lg);
-  display: none;
-  flex-direction: column;
-}
-
-.sidebar .logo {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-lg);
-}
-
-.nav-desktop ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-desktop a {
-  display: block;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-sm);
-  transition: background var(--transition-fast);
-}
-
-.nav-desktop a.active,
-.nav-desktop a:hover {
-  background: rgba(108,99,255,0.1);
-  color: var(--color-primary);
-}
-
-/* Main Container */
-.main-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-dropdown);
-  background: var(--color-surface);
-  padding: var(--space-md) var(--space-lg);
+/* ====== TOPBAR ====== */
+.topbar {
+  height: 64px;
+  background: var(--bg-topbar);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-}
-
-/* Content */
-.content {
-  flex: 1;
-  padding: var(--space-lg);
-}
-
-/* Dashboard widgets */
-.dashboard-widgets {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-lg);
-}
-
-/* Mobile Bottom Navigation */
-.nav-mobile {
+  padding: 0 1.25rem;
   position: sticky;
-  bottom: 0;
+  top: 0;
+  z-index: 900;
+}
+
+.topbar-left {
   display: flex;
-  justify-content: space-around;
-  background: var(--color-surface);
-  padding: var(--space-sm) 0;
-  box-shadow: var(--shadow-lg);
+  align-items: center;
+  gap: 1rem;
 }
 
-.nav-mobile a {
-  font-size: var(--font-size-lg);
-  padding: var(--space-xs);
-  color: var(--color-text-secondary);
+.menu-toggle {
+  display: none;
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 
-.nav-mobile a.active {
-  color: var(--color-primary);
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* Desktop Breakpoint */
-@media (min-width: 900px) {
-  .sidebar {
-    display: flex;
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ====== PAGE CONTENT ====== */
+.content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.page-header p {
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+/* ====== GRID SYSTEM ====== */
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ====== CARD LAYOUT ====== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ====== FOOTER ====== */
+.footer {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ====== RESPONSIVE ====== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .nav-mobile {
-    display: none;
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main {
+    margin-left: 0;
   }
 
   .content {
-    padding: var(--space-xl);
+    padding: 1rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar-title {
+    font-size: 1rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .topbar {
+    padding: 0 0.75rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.35rem;
   }
 }
