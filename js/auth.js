@@ -1,40 +1,35 @@
-import { initDB, getStore } from "./db/indexeddb.js";
+const users = JSON.parse(localStorage.getItem("flowdesk_users")) || [];
 
-await initDB();
-
-export async function register(email, password) {
-  const hash = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(password)
-  );
-
-  const store = getStore("users", "readwrite");
-  store.add({
-    email,
-    password: Array.from(new Uint8Array(hash))
-  });
+function saveUsers() {
+  localStorage.setItem("flowdesk_users", JSON.stringify(users));
 }
 
-export async function login(email, password) {
-  const store = getStore("users");
-  store.get(email).onsuccess = async (e) => {
-    const user = e.target.result;
-    if (!user) return alert("User not found");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
-    const hash = await crypto.subtle.digest(
-      "SHA-256",
-      new TextEncoder().encode(password)
-    );
+const loginBtn = document.getElementById("loginBtn");
+const registerBtn = document.getElementById("registerBtn");
 
-    if (
-      JSON.stringify(user.password) ===
-      JSON.stringify(Array.from(new Uint8Array(hash)))
-    ) {
-      localStorage.setItem("session", email);
-      location.href = "index.html";
-    } else {
-      alert("Wrong password");
-    }
+if (registerBtn) {
+  registerBtn.onclick = () => {
+    if (!email.value || !password.value) return alert("Fill all fields");
+
+    users.push({ email: email.value, password: password.value });
+    saveUsers();
+    alert("Registered successfully");
+    location.href = "login.html";
   };
 }
 
+if (loginBtn) {
+  loginBtn.onclick = () => {
+    const user = users.find(
+      u => u.email === email.value && u.password === password.value
+    );
+
+    if (!user) return alert("Invalid credentials");
+
+    localStorage.setItem("flowdesk_session", JSON.stringify(user));
+    location.href = "index.html";
+  };
+}
