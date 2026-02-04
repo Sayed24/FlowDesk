@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  function logout() {
+  localStorage.removeItem("flowdesk_session");
+  location.href = "login.html";
+}
+
+
   // =============================
   // Dark Mode Toggle
   // =============================
