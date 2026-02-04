@@ -1,40 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FlowDesk</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="manifest" href="manifest.json">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowDesk – Smart Task Management</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/themes.css" />
 </head>
-<body>
-
-<nav class="sidebar">
-  <h2>FlowDesk</h2>
-  <a href="index.html">Dashboard</a>
-  <a href="tasks.html">Tasks</a>
-  <a href="notes.html">Notes</a>
-  <a href="calendar.html">Calendar</a>
-  <a href="settings.html">Settings</a>
-</nav>
-
-<main class="content">
-  <button onclick="logout()" class="btn danger">Logout</button>
-  <h1>Dashboard</h1>
-
-
-  <section class="dashboard-widgets">
-    <div class="widget-card">✅ Tasks<br><strong id="tasksCount">0</strong></div>
-    <div class="widget-card">📝 Notes<br><strong id="notesCount">0</strong></div>
-    <div class="widget-card">📅 Events<br><strong id="eventsCount">0</strong></div>
-  </section>
+<body class="theme-light">
+<main class="center">
+<h1>FlowDesk</h1>
+<p>Smart productivity platform</p>
+<a href="dashboard.html?demo=true" class="btn-primary">Try Demo</a>
+<a href="login.html" class="btn-outline">Login</a>
 </main>
-
-<script src="js/dashboard.js"></script>
-<script src="js/main.js"></script>
-<script src="js/notifications.js"></script>
-<script src="js/shortcuts.js"></script>
-<script src="js/guard.js"></script>
 </body>
 </html>
