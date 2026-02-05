@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk — Calendar</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">FlowDesk</h2>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="tasks.html">Tasks</a>
+      <a href="calendar.html" class="active">Calendar</a>
+      <a href="team.html">Team</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <h1>Calendar</h1>
+      <div class="topbar-actions">
+        <button id="todayBtn" class="btn">Today</button>
+        <button id="addEventBtn" class="btn">＋ Add Event</button>
+      </div>
+    </header>
+
+    <!-- Calendar View -->
+    <section class="calendar">
+      <div class="calendar-header">
+        <button id="prevMonth">◀</button>
+        <h2 id="monthLabel"></h2>
+        <button id="nextMonth">▶</button>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid">
+        <!-- Days injected by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Add Event Modal -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <h3>Add Event</h3>
+      <input type="text" id="eventTitle" placeholder="Event title" />
+      <input type="date" id="eventDate" />
+      <div class="modal-actions">
+        <button id="saveEvent" class="btn">Save</button>
+        <button id="closeEvent" class="btn danger">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/calendar.js"></script>
+
+</body>
+</html>
 
