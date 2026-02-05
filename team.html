@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk — Team</title>
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+
+<body>
+
+  <!-- ======================
+       Sidebar (Desktop)
+  ======================= -->
+  <aside class="sidebar">
+    <div class="logo">FlowDesk</div>
+    <nav class="nav-desktop">
+      <a href="index.html">Dashboard</a>
+      <a href="tasks.html">Tasks</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="notes.html">Notes</a>
+      <a href="goals.html">Goals</a>
+      <a href="habits.html">Habits</a>
+      <a href="team.html" class="active">Team</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- ======================
+       Main Container
+  ======================= -->
+  <div class="main-container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Team</h1>
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <!-- ======================
+         Main Content
+    ======================= -->
+    <main class="content">
+
+      <!-- Team Overview -->
+      <section class="card">
+        <h2>Team Overview</h2>
+        <p class="muted">
+          Manage members, roles, and permissions.  
+          Works fully offline. Demo mode supported.
+        </p>
+      </section>
+
+      <!-- Team Members -->
+      <section class="team-grid" id="teamList">
+        <!-- JS renders member cards here -->
+      </section>
+
+      <!-- Empty State -->
+      <section id="teamEmpty" class="card hidden">
+        <h3>No team members yet</h3>
+        <p>Add members to collaborate and assign tasks.</p>
+      </section>
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="addMemberBtn" aria-label="Add team member">➕</button>
+
+    <!-- ======================
+         Bottom Nav (Mobile)
+    ======================= -->
+    <nav class="nav-mobile">
+      <a href="index.html">🏠</a>
+      <a href="tasks.html">✅</a>
+      <a href="calendar.html">📅</a>
+      <a href="team.html" class="active">👥</a>
+      <a href="settings.html">⚙️</a>
+    </nav>
+
+  </div>
+
+  <!-- ======================
+       Scripts
+  ======================= -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/team.js"></script>
+
+</body>
+</html>
