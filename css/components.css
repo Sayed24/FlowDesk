@@ -1,65 +1,175 @@
-/* ==========================
-   Components
-============================= */
+/* =========================================================
+   FlowDesk – Components
+   File: css/components.css
+   Depends on: variables.css, base.css, layout.css
+========================================================= */
 
-/* Cards */
-.widget-card,
-.card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast),
-              box-shadow var(--transition-fast);
-}
+/* =========================
+   Buttons
+========================= */
 
-.widget-card:hover,
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
   background: var(--color-primary);
   color: var(--color-text-inverse);
-  font-weight: var(--font-weight-medium);
-  transition: background var(--transition-fast),
-              transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 
 .btn:hover {
-  background: var(--color-accent);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-muted);
 }
 
 .btn-danger {
   background: var(--color-danger);
 }
 
-/* Floating Action Button */
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-round);
+}
+
+/* =========================
+   Cards
+========================= */
+
+.card {
+  background: var(--color-surface);
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-sm);
+}
+
+.card-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* =========================
+   Lists
+========================= */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-solid);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   Badges & Chips
+========================= */
+
+.badge {
+  padding: 2px 8px;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-round);
+  background: var(--color-muted);
+  color: var(--color-text-primary);
+}
+
+.badge.success { background: var(--color-success); color: #020617; }
+.badge.warning { background: var(--color-warning); color: #020617; }
+.badge.danger { background: var(--color-danger); color: #fff; }
+
+/* =========================
+   Modals
+========================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface-solid);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+/* =========================
+   Floating Action Button
+========================= */
+
 .fab {
   position: fixed;
   right: var(--space-lg);
-  bottom: calc(64px + var(--space-lg));
+  bottom: var(--space-lg);
   width: var(--fab-size);
   height: var(--fab-size);
   border-radius: var(--radius-round);
   background: var(--fab-color);
   color: #fff;
   font-size: 1.5rem;
-  box-shadow: var(--fab-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--fab-shadow);
   z-index: var(--z-fab);
-  transition: background var(--transition-fast),
-              transform var(--transition-fast);
+  transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
 .fab:hover {
@@ -67,17 +177,38 @@
   transform: scale(1.05);
 }
 
-/* Mobile FAB positioning */
-@media (min-width: 900px) {
-  .fab {
-    bottom: var(--space-xl);
-  }
+/* =========================
+   Tables (Charts / Team)
+========================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-/* Theme Toggle */
-#theme-toggle {
-  font-size: var(--font-size-lg);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-md);
-  background: rgba(0,0,0,0.05);
+.table th,
+.table td {
+  padding: var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--color-muted);
+}
+
+.table th {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* =========================
+   Responsive Tweaks
+========================= */
+
+@media (max-width: 768px) {
+  .modal {
+    margin: var(--space-md);
+  }
+
+  .fab {
+    right: var(--space-md);
+    bottom: var(--space-md);
+  }
 }
