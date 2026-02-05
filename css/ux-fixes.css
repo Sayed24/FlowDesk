@@ -1,1 +1,86 @@
 
+/* ==============================
+   FLOWDESK FINAL UX FIXES
+   Non-destructive improvements
+================================ */
+
+/* ---------- GLOBAL CONSTRAINTS ---------- */
+.main-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Prevent ultra-wide card stretching */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER CONSISTENCY ---------- */
+.header {
+  min-height: 64px;
+}
+
+/* ---------- CARD HIERARCHY ---------- */
+.card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.card p.muted {
+  font-size: 0.85rem;
+}
+
+/* ---------- DASHBOARD GRID ---------- */
+.dashboard-widgets {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- FAB SAFETY ---------- */
+.fab {
+  bottom: 88px; /* avoids mobile nav overlap */
+}
+
+/* Desktop FAB */
+@media (min-width: 900px) {
+  .fab {
+    bottom: 32px;
+  }
+}
+
+/* ---------- MOBILE TOUCH TARGETS ---------- */
+.nav-mobile a,
+button,
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ---------- TEAM + CALENDAR VISUALS ---------- */
+.team-card,
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ---------- EMPTY STATES ---------- */
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- SMOOTHER MOTION ---------- */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card,
+  .btn,
+  .fab {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+}
