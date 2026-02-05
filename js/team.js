@@ -127,4 +127,3 @@ function renderTeam() {
   const store = getStore("team");
   store.getAll().onsuccess = e => render(e.target.result);
 }
-
