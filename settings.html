@@ -8,6 +8,31 @@
 <body>
 
 <h1>Settings</h1>
+  <div class="card">
+  <h3>Data Management</h3>
+
+  <button class="btn" onclick="importFile.click()">Restore Backup</button>
+  <button class="btn" id="backupBtn">Export Backup</button>
+
+  <hr>
+
+  <button class="btn" onclick="exportCSV('tasks')">Export Tasks CSV</button>
+  <button class="btn" onclick="exportCSV('notes')">Export Notes CSV</button>
+  <button class="btn" onclick="exportCSV('goals')">Export Goals CSV</button>
+  <button class="btn" onclick="exportCSV('habits')">Export Habits CSV</button>
+
+  <input type="file" id="importFile" hidden>
+</div>
+
+<script type="module">
+  import { exportBackup, importBackup } from "./js/backup.js";
+  import { exportCSV } from "./js/export-csv.js";
+
+  document.getElementById("backupBtn").onclick = exportBackup;
+  document.getElementById("importFile").onchange = e =>
+    importBackup(e.target.files[0]);
+</script>
+
 
 <h3>Theme</h3>
 <input type="color" id="themePicker">
