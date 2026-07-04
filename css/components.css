@@ -1,214 +1,565 @@
-/* =========================================================
-   FlowDesk – Components
-   File: css/components.css
-   Depends on: variables.css, base.css, layout.css
-========================================================= */
+/* ==========================================================
+   FlowDesk
+   File: components.css
+   Part 1
+   Buttons • Cards • Badges • Chips • Avatars
+========================================================== */
 
-/* =========================
-   Buttons
-========================= */
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    min-height:46px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:var(--radius-md);
+
+    background:var(--color-primary);
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        background var(--fast),
+        color var(--fast),
+        transform var(--fast),
+        box-shadow var(--fast);
+
+    box-shadow:var(--shadow-sm);
+
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+.btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
 }
 
-.btn:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+.btn:active{
+
+    transform:scale(.98);
+
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-muted);
+.btn svg{
+
+    width:18px;
+    height:18px;
+
 }
 
-.btn-danger {
-  background: var(--color-danger);
+
+
+/* ==========================================================
+   BUTTON VARIANTS
+========================================================== */
+
+.btn-primary{
+
+    background:var(--color-primary);
+
+    color:white;
+
 }
 
-.btn-icon {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border-radius: var(--radius-round);
+.btn-secondary{
+
+    background:var(--color-secondary);
+
+    color:white;
+
 }
 
-/* =========================
-   Cards
-========================= */
+.btn-success{
 
-.card {
-  background: var(--color-surface);
-  backdrop-filter: blur(14px);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    background:var(--color-success);
+
+    color:white;
+
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.btn-warning{
+
+    background:var(--color-warning);
+
+    color:white;
+
 }
 
-.card-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
-  margin-bottom: var(--space-sm);
+.btn-danger{
+
+    background:var(--color-danger);
+
+    color:white;
+
 }
 
-.card-meta {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+.btn-info{
+
+    background:var(--color-info);
+
+    color:white;
+
 }
 
-/* =========================
-   Lists
-========================= */
+.btn-light{
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+    background:var(--color-surface);
+
+    color:var(--color-text);
+
+    border:1px solid var(--color-border);
+
 }
 
-.list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-solid);
-  box-shadow: var(--shadow-sm);
+.btn-dark{
+
+    background:#111827;
+
+    color:white;
+
 }
 
-/* =========================
-   Badges & Chips
-========================= */
 
-.badge {
-  padding: 2px 8px;
-  font-size: var(--font-size-xs);
-  border-radius: var(--radius-round);
-  background: var(--color-muted);
-  color: var(--color-text-primary);
+
+/* ==========================================================
+   OUTLINE BUTTONS
+========================================================== */
+
+.btn-outline{
+
+    background:transparent;
+
+    border:1px solid var(--color-border);
+
+    color:var(--color-text);
+
 }
 
-.badge.success { background: var(--color-success); color: #020617; }
-.badge.warning { background: var(--color-warning); color: #020617; }
-.badge.danger { background: var(--color-danger); color: #fff; }
+.btn-outline:hover{
 
-/* =========================
-   Modals
-========================= */
+    background:var(--primary-50);
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: var(--z-modal);
 }
 
-.modal {
-  width: 100%;
-  max-width: 420px;
-  background: var(--color-surface-solid);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-lg);
+
+
+/* ==========================================================
+   GHOST BUTTON
+========================================================== */
+
+.btn-ghost{
+
+    background:transparent;
+
+    color:var(--color-text);
+
+    box-shadow:none;
+
 }
 
-.modal-header {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-md);
+.btn-ghost:hover{
+
+    background:rgba(99,102,241,.08);
+
 }
 
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-sm);
+
+
+/* ==========================================================
+   ICON BUTTON
+========================================================== */
+
+.icon-btn{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--color-surface);
+
+    border:1px solid var(--color-border);
+
+    transition:all var(--fast);
+
 }
 
-/* =========================
-   Floating Action Button
-========================= */
+.icon-btn:hover{
 
-.fab {
-  position: fixed;
-  right: var(--space-lg);
-  bottom: var(--space-lg);
-  width: var(--fab-size);
-  height: var(--fab-size);
-  border-radius: var(--radius-round);
-  background: var(--fab-color);
-  color: #fff;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--fab-shadow);
-  z-index: var(--z-fab);
-  transition: transform var(--transition-fast), background var(--transition-fast);
+    background:var(--primary-50);
+
+    transform:translateY(-2px);
+
 }
 
-.fab:hover {
-  background: var(--fab-color-hover);
-  transform: scale(1.05);
+
+
+/* ==========================================================
+   BUTTON SIZES
+========================================================== */
+
+.btn-sm{
+
+    min-height:36px;
+
+    padding:8px 14px;
+
+    font-size:13px;
+
 }
 
-/* =========================
-   Tables (Charts / Team)
-========================= */
+.btn-lg{
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
+    min-height:56px;
+
+    padding:16px 28px;
+
+    font-size:17px;
+
 }
 
-.table th,
-.table td {
-  padding: var(--space-sm);
-  text-align: left;
-  border-bottom: 1px solid var(--color-muted);
+
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.card{
+
+    background:var(--color-surface);
+
+    border-radius:var(--radius-lg);
+
+    padding:24px;
+
+    border:1px solid var(--color-border);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:
+        transform var(--fast),
+        box-shadow var(--fast);
+
 }
 
-.table th {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-lg);
+
 }
 
-/* =========================
-   Responsive Tweaks
-========================= */
 
-@media (max-width: 768px) {
-  .modal {
-    margin: var(--space-md);
-  }
 
-  .fab {
-    right: var(--space-md);
-    bottom: var(--space-md);
-  }
+/* ==========================================================
+   CARD HEADER
+========================================================== */
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.card-title{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+}
+
+.card-subtitle{
+
+    color:var(--color-text-light);
+
+    font-size:.9rem;
+
+}
+
+
+
+/* ==========================================================
+   DASHBOARD CARD
+========================================================== */
+
+.dashboard-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    min-height:180px;
+
+}
+
+
+
+/* ==========================================================
+   STAT CARD
+========================================================== */
+
+.stat-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.stat-value{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.stat-label{
+
+    color:var(--color-text-light);
+
+}
+
+.stat-change{
+
+    font-size:.85rem;
+
+    color:var(--color-success);
+
+}
+
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:5px 10px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.badge-primary{
+
+    background:var(--primary-100);
+
+    color:var(--primary-700);
+
+}
+
+.badge-success{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+.badge-warning{
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+}
+
+.badge-danger{
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+}
+
+.badge-info{
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+}
+
+
+
+/* ==========================================================
+   CHIPS
+========================================================== */
+
+.chip{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:var(--color-surface);
+
+    border:1px solid var(--color-border);
+
+    font-size:14px;
+
+}
+
+.chip.active{
+
+    background:var(--color-primary);
+
+    color:white;
+
+}
+
+
+
+/* ==========================================================
+   AVATARS
+========================================================== */
+
+.avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:var(--primary-100);
+
+}
+
+.avatar-sm{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+.avatar-lg{
+
+    width:60px;
+
+    height:60px;
+
+}
+
+.avatar-xl{
+
+    width:80px;
+
+    height:80px;
+
+}
+
+
+
+/* ==========================================================
+   AVATAR GROUP
+========================================================== */
+
+.avatar-group{
+
+    display:flex;
+
+}
+
+.avatar-group .avatar{
+
+    margin-left:-10px;
+
+    border:2px solid var(--color-surface);
+
+}
+
+.avatar-group .avatar:first-child{
+
+    margin-left:0;
+
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:768px){
+
+    .btn{
+
+        width:100%;
+
+    }
+
+    .btn-group{
+
+        display:grid;
+
+        gap:12px;
+
+    }
+
+    .card{
+
+        padding:18px;
+
+    }
+
 }
