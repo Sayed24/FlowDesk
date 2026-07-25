@@ -1,119 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="FlowDesk is an offline-first personal productivity dashboard for tasks, notes, goals, habits, calendar planning, and analytics." />
+  <meta name="theme-color" content="#6d5dfc" />
+  <meta name="color-scheme" content="light dark" />
 
-    <meta charset="UTF-8">
+  <title>FlowDesk</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
 
-    <meta
-        name="description"
-        content="FlowDesk - Offline First Productivity Dashboard">
-
-    <meta
-        name="theme-color"
-        content="#6366F1">
-
-    <meta
-        name="color-scheme"
-        content="light dark">
-
-    <title>FlowDesk</title>
-
-    <!-- Fonts -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="assets/css/reset.css">
-
-    <link rel="stylesheet" href="assets/css/variables.css">
-
-    <link rel="stylesheet" href="assets/css/typography.css">
-
-    <link rel="stylesheet" href="assets/css/layout.css">
-
-    <link rel="stylesheet" href="assets/css/components.css">
-
-    <link rel="stylesheet" href="assets/css/utilities.css">
-
-    <link rel="stylesheet" href="assets/css/animations.css">
-
-    <link rel="stylesheet" href="assets/css/themes.css">
-
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/views.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
-
 <body>
+  <noscript>
+    <div class="noscript-message">
+      FlowDesk requires JavaScript to run. Please enable JavaScript and reload the page.
+    </div>
+  </noscript>
 
-<div id="app">
+  <div id="app" class="app-shell" aria-busy="true">
+    <div id="sidebarOverlay" class="sidebar-overlay" hidden></div>
 
-    <!-- Sidebar injected here -->
+    <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar__header">
+        <a class="brand" href="#/dashboard" aria-label="FlowDesk dashboard">
+          <span class="brand__mark" aria-hidden="true">F</span>
+          <span class="brand__text">FlowDesk</span>
+        </a>
 
-    <aside id="sidebar"></aside>
+        <button id="closeSidebarBtn" class="icon-button sidebar__close" type="button" aria-label="Close navigation">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
 
-    <!-- Main -->
+      <nav id="desktopNav" class="sidebar__nav"></nav>
 
-    <main class="main">
+      <div class="sidebar__footer">
+        <div class="profile-chip">
+          <div id="sidebarAvatar" class="avatar" aria-hidden="true">D</div>
+          <div class="profile-chip__copy">
+            <strong id="sidebarUserName">Demo User</strong>
+            <span id="sidebarUserRole">Demo mode</span>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-        <!-- Header -->
+    <div class="app-main">
+      <header class="topbar">
+        <div class="topbar__left">
+          <button id="menuBtn" class="icon-button topbar__menu" type="button" aria-label="Open navigation">
+            <span aria-hidden="true">☰</span>
+          </button>
 
-        <header id="header"></header>
+          <div>
+            <p id="pageEyebrow" class="eyebrow">Overview</p>
+            <h1 id="pageTitle" class="topbar__title">Dashboard</h1>
+          </div>
+        </div>
 
-        <!-- Router -->
+        <div class="topbar__actions">
+          <button id="searchBtn" class="icon-button" type="button" aria-label="Open search">
+            <span aria-hidden="true">⌕</span>
+          </button>
 
-        <section id="page-container"></section>
+          <button id="notificationBtn" class="icon-button notification-button" type="button" aria-label="Open notifications">
+            <span aria-hidden="true">🔔</span>
+            <span id="notificationDot" class="notification-dot" hidden></span>
+          </button>
 
-    </main>
+          <button id="themeBtn" class="icon-button" type="button" aria-label="Toggle color theme">
+            <span id="themeIcon" aria-hidden="true">🌙</span>
+          </button>
 
-</div>
+          <button id="profileBtn" class="profile-button" type="button" aria-label="Open account menu">
+            <span id="topbarAvatar" class="avatar avatar--small" aria-hidden="true">D</span>
+            <span class="profile-button__text">
+              <strong id="topbarUserName">Demo User</strong>
+              <small id="topbarUserRole">Demo</small>
+            </span>
+          </button>
+        </div>
+      </header>
 
-<!-- Mobile Navigation -->
+      <section id="demoBanner" class="demo-banner" aria-label="Demo mode notice">
+        <div>
+          <strong>Public demo mode</strong>
+          <span>Your demo data stays in this browser.</span>
+        </div>
+        <button id="openAuthBtn" class="button button--small button--secondary" type="button">Create local account</button>
+      </section>
 
-<nav id="mobile-nav"></nav>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
 
-<!-- Floating Button -->
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation"></nav>
 
-<div id="floating-action-button"></div>
+    <button id="fab" class="fab" type="button" aria-label="Create new item">
+      <span aria-hidden="true">+</span>
+    </button>
+  </div>
 
-<!-- Toast Container -->
+  <div id="modalRoot"></div>
+  <div id="drawerRoot"></div>
+  <div id="toastRoot" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 
-<div id="toast-container"></div>
+  <template id="loadingTemplate">
+    <section class="loading-state" aria-label="Loading">
+      <span class="spinner" aria-hidden="true"></span>
+      <p>Loading FlowDesk…</p>
+    </section>
+  </template>
 
-<!-- Notification Drawer -->
-
-<div id="notification-panel"></div>
-
-<!-- Command Palette -->
-
-<div id="command-palette"></div>
-
-<!-- Global Loader -->
-
-<div id="loader"></div>
-
-<!-- Modal Root -->
-
-<div id="modal-root"></div>
-
-<!-- Scripts -->
-
-<script src="assets/vendor/chart.min.js"></script>
-
-<script type="module"
-        src="assets/js/app.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
-
 </html>
