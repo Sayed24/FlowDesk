@@ -1,1 +1,227 @@
 
+/* ==========================================================
+   FlowDesk Typography
+   Version 1.0
+========================================================== */
+
+html{
+    font-size:16px;
+}
+
+body{
+    font-family:var(--font-family);
+    font-size:var(--fs-md);
+    font-weight:400;
+    line-height:1.6;
+    color:var(--text);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+}
+
+/* ==========================================================
+   Headings
+========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-weight:700;
+    line-height:1.2;
+    color:var(--text);
+    margin-bottom:1rem;
+}
+
+h1{
+    font-size:clamp(2rem,4vw,3rem);
+}
+
+h2{
+    font-size:clamp(1.75rem,3vw,2.5rem);
+}
+
+h3{
+    font-size:1.75rem;
+}
+
+h4{
+    font-size:1.35rem;
+}
+
+h5{
+    font-size:1.15rem;
+}
+
+h6{
+    font-size:1rem;
+}
+
+/* ==========================================================
+   Paragraphs
+========================================================== */
+
+p{
+    margin-bottom:1rem;
+    color:var(--text-light);
+}
+
+/* ==========================================================
+   Links
+========================================================== */
+
+a{
+    color:var(--primary);
+    text-decoration:none;
+    transition:color .2s ease;
+}
+
+a:hover{
+    color:var(--primary-hover);
+}
+
+/* ==========================================================
+   Lists
+========================================================== */
+
+ul,
+ol{
+    padding-left:1.5rem;
+    margin-bottom:1rem;
+}
+
+li{
+    margin-bottom:.4rem;
+}
+
+/* ==========================================================
+   Text Helpers
+========================================================== */
+
+.text-xs{
+    font-size:var(--fs-xs);
+}
+
+.text-sm{
+    font-size:var(--fs-sm);
+}
+
+.text-md{
+    font-size:var(--fs-md);
+}
+
+.text-lg{
+    font-size:var(--fs-lg);
+}
+
+.text-xl{
+    font-size:var(--fs-xl);
+}
+
+.text-2xl{
+    font-size:var(--fs-2xl);
+}
+
+.text-3xl{
+    font-size:var(--fs-3xl);
+}
+
+.font-normal{
+    font-weight:400;
+}
+
+.font-medium{
+    font-weight:500;
+}
+
+.font-semibold{
+    font-weight:600;
+}
+
+.font-bold{
+    font-weight:700;
+}
+
+.font-extrabold{
+    font-weight:800;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.text-left{
+    text-align:left;
+}
+
+.text-right{
+    text-align:right;
+}
+
+.text-muted{
+    color:var(--text-muted);
+}
+
+.text-primary{
+    color:var(--primary);
+}
+
+.text-success{
+    color:var(--success);
+}
+
+.text-danger{
+    color:var(--danger);
+}
+
+.text-warning{
+    color:var(--warning);
+}
+
+/* ==========================================================
+   Blockquote
+========================================================== */
+
+blockquote{
+    padding:1rem 1.5rem;
+    border-left:4px solid var(--primary);
+    background:var(--surface);
+    border-radius:var(--radius-md);
+    color:var(--text-light);
+    margin:1.5rem 0;
+}
+
+/* ==========================================================
+   Code
+========================================================== */
+
+code,
+pre{
+    font-family:Consolas,Monaco,monospace;
+}
+
+code{
+    background:var(--surface-2);
+    padding:.2rem .4rem;
+    border-radius:6px;
+}
+
+pre{
+    background:var(--surface);
+    padding:1rem;
+    border-radius:var(--radius-md);
+    overflow:auto;
+    border:1px solid var(--border);
+}
+
+/* ==========================================================
+   Selection
+========================================================== */
+
+::selection{
+    background:var(--primary);
+    color:#fff;
+}
