@@ -1,1 +1,376 @@
+/* ==========================================================
+   FlowDesk Animations
+   Version: 1.0
+   Purpose: Global animations and keyframes
+========================================================== */
 
+/* ==========================================================
+   Fade Animations
+========================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ==========================================================
+   Slide Animations
+========================================================== */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================
+   Scale
+========================================================== */
+
+@keyframes scaleIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes scaleOut {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+}
+
+/* ==========================================================
+   Rotation
+========================================================== */
+
+@keyframes rotate360 {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes rotateReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+
+}
+
+/* ==========================================================
+   Pulse
+========================================================== */
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.15);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.15);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+}
+
+/* ==========================================================
+   Bounce
+========================================================== */
+
+@keyframes bounce {
+
+    0%,20%,50%,80%,100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-12px);
+    }
+
+    60% {
+        transform: translateY(-6px);
+    }
+
+}
+
+/* ==========================================================
+   Floating
+========================================================== */
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+/* ==========================================================
+   Shake
+========================================================== */
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-6px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+
+}
+
+/* ==========================================================
+   Wiggle
+========================================================== */
+
+@keyframes wiggle {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+
+    75% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+/* ==========================================================
+   Spinner
+========================================================== */
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+/* ==========================================================
+   Skeleton Loading
+========================================================== */
+
+@keyframes shimmer {
+
+    0% {
+        background-position: -600px 0;
+    }
+
+    100% {
+        background-position: 600px 0;
+    }
+
+}
+
+/* ==========================================================
+   Progress Bar
+========================================================== */
+
+@keyframes progressFill {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+
+}
+
+/* ==========================================================
+   Notification Dot
+========================================================== */
+
+@keyframes ping {
+
+    75%,100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+
+}
+
+/* ==========================================================
+   Glow
+========================================================== */
+
+@keyframes glow {
+
+    0% {
+        box-shadow: 0 0 0 rgba(99,102,241,0);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(99,102,241,.45);
+    }
+
+    100% {
+        box-shadow: 0 0 0 rgba(99,102,241,0);
+    }
+
+}
+
+/* ==========================================================
+   Reveal
+========================================================== */
+
+@keyframes reveal {
+
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+
+}
