@@ -849,3 +849,436 @@
     animation-duration:.6s;
 
 }
+/* ==========================================================
+   Modal Animations
+========================================================== */
+
+.modal-enter{
+    animation:
+        fadeIn .25s ease,
+        scaleIn .25s ease;
+}
+
+.modal-exit{
+    animation:
+        fadeOut .2s ease,
+        scaleOut .2s ease;
+}
+
+/* ==========================================================
+   Drawer Animations
+========================================================== */
+
+.drawer-enter{
+    animation:slideLeft .3s ease forwards;
+}
+
+.drawer-exit{
+    animation:slideRight .25s ease reverse;
+}
+
+/* ==========================================================
+   Toast Animations
+========================================================== */
+
+.toast-enter{
+    animation:
+        slideRight .35s ease,
+        fadeIn .35s ease;
+}
+
+.toast-exit{
+    animation:
+        fadeOut .25s ease,
+        slideRight .25s reverse;
+}
+
+/* ==========================================================
+   Floating Action Button
+========================================================== */
+
+.fab{
+    animation:
+        float 4s ease-in-out infinite;
+}
+
+.fab:hover{
+    animation:
+        pulse .6s ease;
+}
+
+/* ==========================================================
+   Ripple Effect
+========================================================== */
+
+.ripple{
+    position:relative;
+    overflow:hidden;
+}
+
+.ripple::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    transform:scale(0);
+    background:rgba(255,255,255,.35);
+    opacity:0;
+}
+
+.ripple:active::after{
+    animation:ripple .45s ease;
+}
+
+@keyframes ripple{
+
+0%{
+
+opacity:.7;
+transform:scale(0);
+
+}
+
+100%{
+
+opacity:0;
+transform:scale(3);
+
+}
+
+}
+
+/* ==========================================================
+   Loading Overlay
+========================================================== */
+
+.loading-overlay{
+
+position:absolute;
+inset:0;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+rgba(255,255,255,.72);
+
+backdrop-filter:blur(2px);
+
+animation:fadeIn .2s ease;
+
+z-index:10;
+
+}
+
+/* ==========================================================
+   Skeleton Loader
+========================================================== */
+
+.skeleton{
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#ececec 0%,
+
+#f5f5f5 50%,
+
+#ececec 100%
+
+);
+
+background-size:600px 100%;
+
+animation:
+
+shimmer 1.35s infinite linear;
+
+border-radius:8px;
+
+}
+
+.skeleton-text{
+
+height:14px;
+margin-bottom:12px;
+
+}
+
+.skeleton-title{
+
+height:24px;
+width:50%;
+margin-bottom:20px;
+
+}
+
+.skeleton-avatar{
+
+width:56px;
+height:56px;
+
+border-radius:50%;
+
+}
+
+/* ==========================================================
+   Page Loader
+========================================================== */
+
+.page-loader{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:300px;
+
+}
+
+.page-loader .spinner{
+
+width:48px;
+height:48px;
+
+border-radius:50%;
+
+border:5px solid
+rgba(99,102,241,.18);
+
+border-top-color:
+var(--primary);
+
+animation:
+spin .9s linear infinite;
+
+}
+
+/* ==========================================================
+   Kanban Cards
+========================================================== */
+
+.kanban-card{
+
+transition:
+
+transform .2s ease,
+box-shadow .2s ease;
+
+}
+
+.kanban-card.dragging{
+
+opacity:.65;
+
+transform:
+rotate(2deg)
+scale(1.03);
+
+box-shadow:
+var(--shadow-lg);
+
+}
+
+/* ==========================================================
+   Calendar Events
+========================================================== */
+
+.calendar-event{
+
+transition:
+
+transform .2s ease,
+background .2s ease;
+
+}
+
+.calendar-event:hover{
+
+transform:scale(1.03);
+
+}
+
+/* ==========================================================
+   Chart Animation
+========================================================== */
+
+.chart-appear{
+
+animation:
+
+fadeIn .5s ease,
+slideUp .5s ease;
+
+}
+
+/* ==========================================================
+   Progress Animation
+========================================================== */
+
+.progress-bar{
+
+animation:
+
+progressFill 1s ease forwards;
+
+}
+
+/* ==========================================================
+   Stagger Helpers
+========================================================== */
+
+.stagger>*{
+
+opacity:0;
+
+animation:
+
+slideUp .45s ease forwards;
+
+}
+
+.stagger>*:nth-child(1){
+
+animation-delay:.05s;
+
+}
+
+.stagger>*:nth-child(2){
+
+animation-delay:.10s;
+
+}
+
+.stagger>*:nth-child(3){
+
+animation-delay:.15s;
+
+}
+
+.stagger>*:nth-child(4){
+
+animation-delay:.20s;
+
+}
+
+.stagger>*:nth-child(5){
+
+animation-delay:.25s;
+
+}
+
+.stagger>*:nth-child(6){
+
+animation-delay:.30s;
+
+}
+
+.stagger>*:nth-child(7){
+
+animation-delay:.35s;
+
+}
+
+.stagger>*:nth-child(8){
+
+animation-delay:.40s;
+
+}
+
+/* ==========================================================
+   Table Animation
+========================================================== */
+
+.table tbody tr{
+
+animation:
+
+fadeIn .3s ease;
+
+}
+
+/* ==========================================================
+   Timeline
+========================================================== */
+
+.timeline-item{
+
+animation:
+
+slideLeft .4s ease;
+
+}
+
+/* ==========================================================
+   Notification Badge
+========================================================== */
+
+.notification-badge{
+
+animation:
+
+ping 2s infinite;
+
+}
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.empty-state-icon{
+
+animation:
+
+float 5s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   Hover Animation Disable
+========================================================== */
+
+.no-animation{
+
+animation:none!important;
+
+transition:none!important;
+
+}
+
+/* ==========================================================
+   Reduced Motion
+========================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+*,
+*::before,
+*::after{
+
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+
+}
+
+}
+
+/* ==========================================================
+   Print
+========================================================== */
+
+@media print{
+
+*{
+
+animation:none!important;
+transition:none!important;
+
+}
+
+}
