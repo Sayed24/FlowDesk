@@ -1,1 +1,13 @@
 
+{
+  "name": "FlowDesk",
+  "short_name": "FlowDesk",
+  "description": "Offline-first personal productivity dashboard",
+  "start_url": "./index.html#/dashboard",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f7fb",
+  "theme_color": "#6d5dfc",
+  "icons": []
+}
