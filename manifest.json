@@ -1,13 +1,14 @@
-
 {
-  "name": "FlowDesk",
-  "short_name": "FlowDesk",
-  "description": "Offline-first personal productivity dashboard",
-  "start_url": "./index.html#/dashboard",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "any",
-  "background_color": "#f5f7fb",
-  "theme_color": "#6d5dfc",
-  "icons": []
+  "name":"FlowDesk — Offline Productivity",
+  "short_name":"FlowDesk",
+  "description":"Private offline-first productivity dashboard",
+  "start_url":"./index.html#/dashboard",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f5f7fb",
+  "theme_color":"#6d5dfc",
+  "icons":[
+    {"src":"assets/icons/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"assets/icons/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
 }
